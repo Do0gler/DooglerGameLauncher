@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://clle2o44ypowh"]
+
+[ext_resource type="Texture2D" uid="uid://yvikj068iu1c" path="res://GameArt/LabEscape/LabEscapeIcon.png" id="1_kexsg"]
+[ext_resource type="Texture2D" uid="uid://bfcimk8gue2jo" path="res://GameArt/LabEscape/LabEscapeBG.png" id="1_t26vi"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_vm1go"]
+
+[resource]
+script = ExtResource("1_vm1go")
+file_size_mb = 2.65
+download_path = "http://dl.dropboxusercontent.com/scl/fi/xkbf8qu0s4yps92pyz3pd/Lab-Escape.html?rlkey=218gwmstzy8hprmfljo002ce9&dl=0"
+game_name = "Lab Escape"
+file_name = "Lab-Escape.html"
+description = "Unfinished platformer
+===================
+Arrow Keys to move"
+icon = ExtResource("1_kexsg")
+background = ExtResource("1_t26vi")

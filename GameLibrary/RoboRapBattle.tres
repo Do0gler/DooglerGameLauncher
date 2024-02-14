@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://dnyw5i2s86yxk"]
+
+[ext_resource type="Texture2D" uid="uid://d2r0fqp6b8n6k" path="res://GameArt/RoboRapBattle/RRPBG.png" id="1_d0c0t"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_nxuim"]
+[ext_resource type="Texture2D" uid="uid://b6sx222xfducs" path="res://GameArt/RoboRapBattle/RRBIcon.png" id="2_woabc"]
+
+[resource]
+script = ExtResource("1_nxuim")
+file_size_mb = 14.87
+download_path = "http://dl.dropboxusercontent.com/scl/fi/1n1o94510hgk4obakcxb4/RoboRapBattle.html?rlkey=y4s6c3zy9hi287fw33hke712j&dl=0"
+game_name = "Robo Rap Battle"
+file_name = "RoboRapBattle.html"
+description = "--Controls--
+WASD or Arrow Keys (or both)
+Space to Confirm/Press"
+icon = ExtResource("2_woabc")
+background = ExtResource("1_d0c0t")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://n0mq5aeoiq8o"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_h7nva"]
+[ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="1_xk3xc"]
+[ext_resource type="Texture2D" uid="uid://cqim0tk60yl1j" path="res://GameArt/OAF/Player.png" id="2_xwusq"]
+
+[resource]
+script = ExtResource("1_h7nva")
+file_size_mb = 68.93
+download_path = "http://dl.dropboxusercontent.com/scl/fi/eohggymlkqciwmhskbmpq/OAF.exe?rlkey=7vbaikbi8o5c7vjbfmas4xdo6&dl=0"
+game_name = "O.A.F"
+file_name = "OAF.exe"
+description = "WASD To Move/control UI
+
+Space or Shift to move slowly
+
+Space or Enter to confirm menu options"
+icon = ExtResource("2_xwusq")
+background = ExtResource("1_xk3xc")

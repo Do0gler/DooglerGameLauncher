@@ -1,0 +1,372 @@
+[gd_scene load_steps=22 format=3 uid="uid://oec37qhorbfc"]
+
+[ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_w1pu6"]
+[ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://GamePanel.tscn" id="2_2tpj6"]
+[ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="2_w7yyq"]
+[ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="4_2y63r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yah11"]
+bg_color = Color(0, 0, 0, 0.239216)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gxmgg"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h186b"]
+bg_color = Color(0, 0.368627, 0.113725, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ixk5"]
+bg_color = Color(0.6, 0.6, 0.6, 0.356863)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4l1u"]
+bg_color = Color(0.560784, 0.847059, 0.380392, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8y1s"]
+bg_color = Color(0.376471, 0.694118, 0.141176, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="Theme" id="Theme_5vc6s"]
+Button/colors/font_color = Color(0.113725, 0.360784, 0.180392, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_h186b")
+Button/styles/focus = SubResource("StyleBoxFlat_8ixk5")
+Button/styles/hover = SubResource("StyleBoxFlat_a4l1u")
+Button/styles/normal = SubResource("StyleBoxFlat_y8y1s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77fdl"]
+bg_color = Color(0.756863, 0, 0.0470588, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmvgi"]
+bg_color = Color(0.52549, 0, 0.0745098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ronit"]
+bg_color = Color(1, 0.407843, 0.341176, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ojc7f"]
+bg_color = Color(0.756863, 0, 0.0470588, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="Theme" id="Theme_fvkd8"]
+Button/colors/font_color = Color(0.360784, 0.113725, 0.113725, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_77fdl")
+Button/styles/focus = SubResource("StyleBoxFlat_dmvgi")
+Button/styles/hover = SubResource("StyleBoxFlat_ronit")
+Button/styles/normal = SubResource("StyleBoxFlat_ojc7f")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chnxb"]
+bg_color = Color(0.192157, 0.643137, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="Theme" id="Theme_w34vx"]
+Button/styles/disabled = SubResource("StyleBoxFlat_h186b")
+Button/styles/focus = SubResource("StyleBoxFlat_8ixk5")
+Button/styles/hover = SubResource("StyleBoxFlat_a4l1u")
+Button/styles/normal = SubResource("StyleBoxFlat_chnxb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8m66h"]
+bg_color = Color(0.0941176, 0.8, 0.882353, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xclb"]
+bg_color = Color(0.235294, 0.647059, 0.847059, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+
+[sub_resource type="Theme" id="Theme_efhu5"]
+Button/colors/font_color = Color(0.14902, 0.262745, 0.34902, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_h186b")
+Button/styles/focus = SubResource("StyleBoxFlat_8ixk5")
+Button/styles/hover = SubResource("StyleBoxFlat_8m66h")
+Button/styles/normal = SubResource("StyleBoxFlat_1xclb")
+
+[node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -3.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w1pu6")
+game_panel = ExtResource("2_2tpj6")
+games_list = NodePath("HSplitContainer/GameListPanel/ScrollContainer/VBoxContainer")
+display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/ScrollContainer/Description")
+display_icon = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/TextureRect")
+display_bg = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/Background")
+display_name = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/Label")
+install_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/InstallButton")
+stop_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2")
+progress_bar = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/ProgressBar")
+uninstall_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4.25
+offset_bottom = 2.96997
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 145
+
+[node name="GameListPanel" type="PanelContainer" parent="HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/GameListPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/GameListPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 9
+
+[node name="GameInfoPanel" type="Panel" parent="HSplitContainer"]
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/GameInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 420
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yah11")
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_w7yyq")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(287.425, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "The Game Name Goes here !"
+label_settings = SubResource("LabelSettings_gxmgg")
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Background" type="TextureRect" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer"]
+z_index = -1
+layout_mode = 2
+texture = ExtResource("4_2y63r")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="PanelContainer2" type="PanelContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_5vc6s")
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="StopButton2" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 80.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_fvkd8")
+theme_override_font_sizes/font_size = 40
+text = "Stop"
+
+[node name="InstallButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
+z_index = 2
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 80.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_w34vx")
+theme_override_font_sizes/font_size = 40
+text = "Install"
+
+[node name="ProgressBar" type="ProgressBar" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
+visible = false
+custom_minimum_size = Vector2(198.59, 0)
+layout_mode = 0
+offset_top = 100.0
+offset_right = 198.59
+offset_bottom = 127.0
+rounded = true
+
+[node name="UninstallButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+z_index = 2
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_efhu5")
+theme_override_font_sizes/font_size = 40
+text = "Uninstall"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="Description" type="Label" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Date made: 00/00/0000
+Description Text:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+autowrap_mode = 2
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Confirmation"
+position = Vector2i(395, 275)
+size = Vector2i(368, 100)
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to uninstall this game?"
+
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="launch_selected_game"]
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2" to="." method="launch_selected_game"]
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/InstallButton" to="." method="install_selected_game"]
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton" to="." method="show_uninstall_confirm"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="uninstall_current_game"]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://by0slcofly2up"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_0b34c"]
+[ext_resource type="Texture2D" uid="uid://di4w8npis7qvy" path="res://GameArt/TextConsole/TextConsoleBG.png" id="1_y1r4t"]
+[ext_resource type="Texture2D" uid="uid://d3pmukfkwy8l2" path="res://GameArt/TextConsole/TextConsoleIcon.png" id="2_ce252"]
+
+[resource]
+script = ExtResource("1_0b34c")
+file_size_mb = 2.49
+download_path = "http://dl.dropboxusercontent.com/scl/fi/aumag6e1qwj510219jlkx/Text-Console.html?rlkey=pe9u6bc3dduza43gs3tg49ewh&dl=0"
+game_name = "Text Console"
+file_name = "Text-Console.html"
+description = "-Type whatever in the console-
+If you press up arrow while not typing it inputs your last command
+-list of commands-
+/execute_bb - starts a game of brick breaker
+/end_bb - ends a game of brick breaker
+/var - Shows all variables
+/varoff - Hides All Variables
+/clear - Clears all text
+/Random10 - shows a random number from 1 to 10
+/Random100 - shows a random number from 1 to 100
+/Random1000 shows a random number from 1 to 1000
+(+1 Secret Command)
+-----------------------------------------------
+If you input an unidentified key it will output as an underscore"
+icon = ExtResource("2_ce252")
+background = ExtResource("1_y1r4t")

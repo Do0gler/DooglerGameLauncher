@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://geum07ylqjs3"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_1fc46"]
+[ext_resource type="Texture2D" uid="uid://lvduiq24osy1" path="res://GameArt/4WizOG/OGWizBG.png" id="1_2ursq"]
+[ext_resource type="Texture2D" uid="uid://dxwlcsd87w4u5" path="res://GameArt/4WizOG/OGWiz.png" id="2_tun8a"]
+
+[resource]
+script = ExtResource("1_1fc46")
+file_size_mb = 3.02
+download_path = "http://dl.dropboxusercontent.com/scl/fi/7lyrq7fvatcw0w5vgnbh4/4WizardOG.html?rlkey=a1a9wj5ggvq796qjp1bs876h8&dl=0"
+game_name = "4Wizard Classic"
+file_name = "4WizardOG.html"
+description = "The original version of 4Wizard
+======================================
+W A S D to Move
+Arrow Keys To Shoot
+Collect Coins and Kill all the enemies to advance  to the next round
+Try to get a High-Score"
+icon = ExtResource("2_tun8a")
+background = ExtResource("1_2ursq")

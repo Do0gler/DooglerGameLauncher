@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://4tv63j6crc4f"]
+
+[ext_resource type="Texture2D" uid="uid://cyk0s7nlq4j2v" path="res://GameArt/DabbingSim/DabbingSimBG.png" id="1_00kjb"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_rqdss"]
+[ext_resource type="Texture2D" uid="uid://23it7h85vqb8" path="res://GameArt/DabbingSim/DabbingSimIcon.png" id="2_kuvd7"]
+
+[resource]
+script = ExtResource("1_rqdss")
+file_size_mb = 13.56
+download_path = "http://dl.dropboxusercontent.com/scl/fi/5ywb3xvwoh996rnvvqubx/Dabbing-simulator-20XX.html?rlkey=yp6yzxdc6m1xx64ijxj6vu9d3&dl=0"
+game_name = "Dabbing Simulator 20XX"
+file_name = "DabbingSimulator20XX.html"
+description = "press Space to dab
+-------------------------------------------------------------------------
+each time you dab you gain a point, use the points to buy cosmetics and backgrounds for your David
+-sometimes packages appear click them to gain 100 pts. 
+------------------------------------------------------------------------"
+icon = ExtResource("2_kuvd7")
+background = ExtResource("1_00kjb")

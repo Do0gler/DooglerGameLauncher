@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://cmpfg6j2pyxf"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_47ifv"]
+[ext_resource type="Texture2D" uid="uid://cdnnwt6slftxc" path="res://GameArt/4WizRemake/4WizRemakeBG.png" id="1_k3tcl"]
+[ext_resource type="Texture2D" uid="uid://dg163vaajysud" path="res://GameArt/4WizRemake/4WizRemakeIcon.png" id="2_lxn37"]
+
+[resource]
+script = ExtResource("1_47ifv")
+file_size_mb = 11.69
+download_path = "http://dl.dropboxusercontent.com/scl/fi/ehguk0jssveosxkzp0ag8/4Wizard-2.1.2.html?rlkey=lxmsq5k4cn1dwuvsmpxnyx0ne&dl=0"
+game_name = "4Wizard Remake"
+file_name = "4Wizard-2.1.2.html"
+description = "An Arcade 4-Directional Shooter 
+
+Made in scratch because.
+
+==Controls==
+WASD to move
+ARROW KEYS to shoot
+Q to pause or go back
+E to interact"
+icon = ExtResource("2_lxn37")
+background = ExtResource("1_k3tcl")

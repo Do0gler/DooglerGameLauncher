@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://cb541d4dbdthg"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_2d5ts"]
+[ext_resource type="Texture2D" uid="uid://b6kgy5e5rt5be" path="res://GameArt/KillerRythmn/KillerRythmnBG.png" id="1_d8djn"]
+[ext_resource type="Texture2D" uid="uid://dlawmoyk82a47" path="res://GameArt/KillerRythmn/KillerRythmnIcon.png" id="1_pxk3u"]
+
+[resource]
+script = ExtResource("1_2d5ts")
+file_size_mb = 7.79
+download_path = "http://dl.dropboxusercontent.com/scl/fi/0smp4wcjrgtuufrxhtsk2/Killer-Rythmn.html?rlkey=huxxnfjm48ox1sao4j9gfo8mj&dl=0"
+game_name = "Killer Rythmn!"
+file_name = "Killer-Rythmn.html"
+description = "=====CONTROLS=====
+WASD or Arrow Keys (or both if ur cool)
+Space to Confirm/Press
+=====OTHER=====
+Mobile mode is kinda broken"
+icon = ExtResource("1_pxk3u")
+background = ExtResource("1_d8djn")

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://d0u72l3cl7ouk"]
+
+[ext_resource type="Texture2D" uid="uid://cvo10taw3awhn" path="res://GameArt/DriveZombie/DriveZombie.png" id="1_7nwd6"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_21an0"]
+[ext_resource type="Texture2D" uid="uid://sspgvvimhow4" path="res://GameArt/DriveZombie/DriveZombieIcon.png" id="2_df6xy"]
+
+[resource]
+script = ExtResource("1_21an0")
+file_size_mb = 7.11
+download_path = "http://dl.dropboxusercontent.com/scl/fi/sj1b6hh89vvbrur7tx7zq/Drive-Zombie.html?rlkey=sinx6qb7f2nniw46x72lvk0zp&dl=0"
+game_name = "Drive! Zombie"
+file_name = "Drive-Zombie.html"
+description = "Move your mouse to go (the car will follow your mouse)
+-------------------------------------------------------------------------
+Drive away from the zombie he will kill you
+Your goal is to collect coins without running out of gas
+-------------------------------------------------------------------------
+To get gas you have to collect the gas canisters"
+icon = ExtResource("2_df6xy")
+background = ExtResource("1_7nwd6")
