@@ -18,3 +18,4 @@ Collect Coins and Kill all the enemies to advance  to the next round
 Try to get a High-Score"
 icon = ExtResource("2_tun8a")
 background = ExtResource("1_2ursq")
+screenshots = Array[Texture2D]([])

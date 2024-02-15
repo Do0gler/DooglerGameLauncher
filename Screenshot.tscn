@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bugfw5kivabqq"]
+
+[ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="1_tha25"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kf04j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxm3x"]
+bg_color = Color(1, 1, 1, 0.227451)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bs80j"]
+
+[sub_resource type="Theme" id="Theme_3t1ge"]
+Button/styles/focus = SubResource("StyleBoxEmpty_kf04j")
+Button/styles/hover = SubResource("StyleBoxFlat_wxm3x")
+Button/styles/normal = SubResource("StyleBoxEmpty_bs80j")
+
+[node name="TextureRect" type="TextureRect"]
+custom_minimum_size = Vector2(150, 100)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_tha25")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3t1ge")

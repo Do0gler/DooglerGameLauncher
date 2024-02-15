@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://oec37qhorbfc"]
+[gd_scene load_steps=24 format=3 uid="uid://oec37qhorbfc"]
 
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_w1pu6"]
 [ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://GamePanel.tscn" id="2_2tpj6"]
 [ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="2_w7yyq"]
 [ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="4_2y63r"]
+[ext_resource type="PackedScene" uid="uid://bugfw5kivabqq" path="res://Screenshot.tscn" id="5_7wwmm"]
+[ext_resource type="Texture2D" uid="uid://bb7qyspm4evkm" path="res://GameArt/4WizRemake/4WizScreenshot1.png" id="6_u7djn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yah11"]
 bg_color = Color(0, 0, 0, 0.239216)
@@ -175,7 +177,7 @@ Button/styles/focus = SubResource("StyleBoxFlat_8ixk5")
 Button/styles/hover = SubResource("StyleBoxFlat_8m66h")
 Button/styles/normal = SubResource("StyleBoxFlat_1xclb")
 
-[node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button")]
+[node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "screenshot_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,15 +190,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w1pu6")
 game_panel = ExtResource("2_2tpj6")
+screenshot_panel = ExtResource("5_7wwmm")
 games_list = NodePath("HSplitContainer/GameListPanel/ScrollContainer/VBoxContainer")
-display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/ScrollContainer/Description")
+display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/Description")
 display_icon = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/TextureRect")
 display_bg = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/Background")
 display_name = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/Label")
-install_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/InstallButton")
-stop_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2")
-progress_bar = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/ProgressBar")
-uninstall_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton")
+install_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/InstallButton")
+stop_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2")
+progress_bar = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/ProgressBar")
+uninstall_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton")
+screenshot_container = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/ScreenshotContainer")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 1
@@ -233,7 +237,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 420
+split_offset = 385
 
 [node name="PanelContainer" type="PanelContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer"]
 layout_mode = 2
@@ -276,24 +280,25 @@ texture = ExtResource("4_2y63r")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="PanelContainer2" type="PanelContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer"]
+[node name="InfoContainer" type="PanelContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -302,7 +307,7 @@ theme = SubResource("Theme_5vc6s")
 theme_override_font_sizes/font_size = 40
 text = "Start"
 
-[node name="StopButton2" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
+[node name="StopButton2" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
 visible = false
 z_index = 1
 custom_minimum_size = Vector2(200, 80)
@@ -315,7 +320,7 @@ theme = SubResource("Theme_fvkd8")
 theme_override_font_sizes/font_size = 40
 text = "Stop"
 
-[node name="InstallButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
+[node name="InstallButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
 z_index = 2
 layout_mode = 2
 offset_right = 200.0
@@ -326,7 +331,7 @@ theme = SubResource("Theme_w34vx")
 theme_override_font_sizes/font_size = 40
 text = "Install"
 
-[node name="ProgressBar" type="ProgressBar" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
+[node name="ProgressBar" type="ProgressBar" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton"]
 visible = false
 custom_minimum_size = Vector2(198.59, 0)
 layout_mode = 0
@@ -335,7 +340,7 @@ offset_right = 198.59
 offset_bottom = 127.0
 rounded = true
 
-[node name="UninstallButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="UninstallButton" type="Button" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 z_index = 2
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -345,18 +350,37 @@ theme = SubResource("Theme_efhu5")
 theme_override_font_sizes/font_size = 40
 text = "Uninstall"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HSplitContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 70
+
+[node name="DescriptionContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
-[node name="Description" type="Label" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/ScrollContainer"]
+[node name="Description" type="Label" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Date made: 00/00/0000
 Description Text:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 autowrap_mode = 2
+
+[node name="ScreenshotContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/ScreenshotContainer"]
+custom_minimum_size = Vector2(0, 149)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 title = "Confirmation"
@@ -365,8 +389,35 @@ size = Vector2i(368, 100)
 ok_button_text = "Yes"
 dialog_text = "Are you sure you want to uninstall this game?"
 
-[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="launch_selected_game"]
-[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2" to="." method="launch_selected_game"]
-[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/StartButton/InstallButton" to="." method="install_selected_game"]
-[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer2/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton" to="." method="show_uninstall_confirm"]
+[node name="ScreenshotPopup" type="Window" parent="."]
+disable_3d = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+title = "Screenshot"
+position = Vector2i(180, 90)
+size = Vector2i(869, 449)
+visible = false
+wrap_controls = true
+transient = true
+exclusive = true
+unresizable = true
+always_on_top = true
+popup_window = true
+
+[node name="TextureRect" type="TextureRect" parent="ScreenshotPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_u7djn")
+expand_mode = 3
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="launch_selected_game"]
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2" to="." method="launch_selected_game"]
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/InstallButton" to="." method="install_selected_game"]
+[connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton" to="." method="show_uninstall_confirm"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="uninstall_current_game"]
+[connection signal="close_requested" from="ScreenshotPopup" to="." method="_on_screenshot_popup_close_requested"]

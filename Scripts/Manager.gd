@@ -1,6 +1,7 @@
 extends Control
 
 @export var game_panel : PackedScene
+@export var screenshot_panel : PackedScene
 var game_folder_name : String = "DooglerGamesLibrary"
 var selected_game : Game_Data
 var current_game_pid = 0
@@ -18,6 +19,7 @@ var http : HTTPRequest
 @export var stop_button : Node
 @export var progress_bar : Node
 @export var uninstall_button : Node
+@export var screenshot_container : Node
 
 func _ready():
 	var dir = DirAccess.open("user://")
@@ -26,7 +28,7 @@ func _ready():
 		print("Created Library folder")
 	display_games()
 
-func _process(delta):
+func _process(_delta):
 	if game_launched:
 		if !OS.is_process_running(current_game_pid):
 			game_launched = false
@@ -63,7 +65,6 @@ func install_selected_game():
 	if selected_game != null:
 		http = HTTPRequest.new()
 		add_child(http)
-		var dir = DirAccess.open("user://" + game_folder_name)
 		var download_file_path = "user://" + game_folder_name + "/" + selected_game.file_name
 		var new_game_file = FileAccess.open(download_file_path, FileAccess.WRITE)
 		http.download_file = download_file_path
@@ -117,11 +118,25 @@ func launch_selected_game():
 				launched_game_is_exe = false
 
 func display_selected_game():
+	# Destroy previous screenshots
+	for screenshot in screenshot_container.get_child(0).get_children():
+		screenshot.queue_free()
+	# Set new game info
 	display_name.text = selected_game.game_name
 	display_icon.texture = selected_game.icon
 	display_bg.texture = selected_game.background
 	display_description.text = "File Size: " + str(selected_game.file_size_mb) + " MB\n"\
 	 + selected_game.description
+	# Show new screenshots
+	screenshot_container.visible = !selected_game.screenshots.size() == 0
+	var i = 0
+	for image in selected_game.screenshots:
+		var screenshot = screenshot_panel.instantiate()
+		screenshot.texture = image
+		screenshot_container.get_child(0).add_child(screenshot)
+		screenshot.get_child(0).pressed.connect(_on_screenshot_popup_open.bind(i))
+		i += 1
+	# Show correct buttons for if file is installed or not
 	var dir = DirAccess.open("user://" + game_folder_name)
 	if dir.file_exists(selected_game.file_name):
 		install_button.hide()
@@ -129,3 +144,10 @@ func display_selected_game():
 	else:
 		install_button.show()
 		uninstall_button.hide()
+
+func _on_screenshot_popup_open(screenshot_index):
+	$ScreenshotPopup/TextureRect.texture = selected_game.screenshots[screenshot_index]
+	$ScreenshotPopup.show()
+
+func _on_screenshot_popup_close_requested():
+	$ScreenshotPopup.hide()

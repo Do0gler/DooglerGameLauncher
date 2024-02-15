@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://n0mq5aeoiq8o"]
+[gd_resource type="Resource" script_class="Game_Data" load_steps=7 format=3 uid="uid://n0mq5aeoiq8o"]
 
 [ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_h7nva"]
 [ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="1_xk3xc"]
 [ext_resource type="Texture2D" uid="uid://cqim0tk60yl1j" path="res://GameArt/OAF/Player.png" id="2_xwusq"]
+[ext_resource type="Texture2D" uid="uid://c233c6b837yhb" path="res://GameArt/OAF/OAFScreenshot1.png" id="3_lyfxy"]
+[ext_resource type="Texture2D" uid="uid://cctbkil22imk1" path="res://GameArt/OAF/OAFScreenshot2.png" id="4_x5wca"]
+[ext_resource type="Texture2D" uid="uid://ddpvusqgd3y0b" path="res://GameArt/OAF/OAFScreenshot3.png" id="5_fdybs"]
 
 [resource]
 script = ExtResource("1_h7nva")
@@ -17,3 +20,4 @@ Space or Shift to move slowly
 Space or Enter to confirm menu options"
 icon = ExtResource("2_xwusq")
 background = ExtResource("1_xk3xc")
+screenshots = Array[Texture2D]([ExtResource("3_lyfxy"), ExtResource("4_x5wca"), ExtResource("5_fdybs")])
