@@ -41,6 +41,7 @@ func _process(_delta):
 		progress_bar.value = percent
 
 func display_games():
+	var i = 0
 	var dir = DirAccess.open("res://GameLibrary")
 	if dir:
 		dir.list_dir_begin()
@@ -51,8 +52,12 @@ func display_games():
 				var file = load("res://GameLibrary/" + file_name.replace(".remap",""))
 				games_list.add_child(new_game_panel)
 				new_game_panel.game_data = file
+				if i == 0:
+					selected_game = file
+					display_selected_game()
 				new_game_panel.update_display()
 			file_name = dir.get_next()
+			i += 1
 	else:
 		print("An error occurred when trying to access the path.") 
 
@@ -146,7 +151,7 @@ func display_selected_game():
 		uninstall_button.hide()
 
 func _on_screenshot_popup_open(screenshot_index):
-	$ScreenshotPopup/TextureRect.texture = selected_game.screenshots[screenshot_index]
+	$ScreenshotPopup/VBoxContainer/TextureRect.texture = selected_game.screenshots[screenshot_index]
 	$ScreenshotPopup.show()
 
 func _on_screenshot_popup_close_requested():

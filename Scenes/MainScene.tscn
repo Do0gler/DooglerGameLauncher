@@ -1,14 +1,32 @@
-[gd_scene load_steps=24 format=3 uid="uid://oec37qhorbfc"]
+[gd_scene load_steps=39 format=3 uid="uid://oec37qhorbfc"]
 
-[ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_w1pu6"]
-[ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://GamePanel.tscn" id="2_2tpj6"]
-[ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="2_w7yyq"]
-[ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="4_2y63r"]
-[ext_resource type="PackedScene" uid="uid://bugfw5kivabqq" path="res://Screenshot.tscn" id="5_7wwmm"]
-[ext_resource type="Texture2D" uid="uid://bb7qyspm4evkm" path="res://GameArt/4WizRemake/4WizScreenshot1.png" id="6_u7djn"]
+[ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_ueker"]
+[ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://Scenes/GamePanel.tscn" id="2_mdwpe"]
+[ext_resource type="PackedScene" uid="uid://bugfw5kivabqq" path="res://Scenes/Screenshot.tscn" id="3_6basi"]
+[ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="4_dhwsy"]
+[ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="5_2ycfk"]
+[ext_resource type="Texture2D" uid="uid://8e1tc1it83oc" path="res://UIArt/XIcon.png" id="6_lb3r5"]
+[ext_resource type="Texture2D" uid="uid://bb7qyspm4evkm" path="res://GameArt/4WizRemake/4WizScreenshot1.png" id="6_nmrpw"]
+[ext_resource type="Texture2D" uid="uid://dbf0r0et3ci4d" path="res://UIArt/XIconSelected.png" id="7_p7dyr"]
+[ext_resource type="Texture2D" uid="uid://b0nhw1nn2wb17" path="res://UIArt/MinimizeIcon.png" id="9_e6v2w"]
+[ext_resource type="Script" path="res://Scripts/Titlebar.gd" id="9_k5gd2"]
+[ext_resource type="Texture2D" uid="uid://c18vjxsx8flry" path="res://UIArt/MinimizeIconHover.png" id="10_dnwn3"]
+[ext_resource type="Texture2D" uid="uid://cafw87ja78c2k" path="res://UIArt/WindowedIcon.png" id="11_5j8ed"]
+[ext_resource type="Texture2D" uid="uid://dxy0mmxe8pel4" path="res://UIArt/WindowedIconHover.png" id="12_fgn12"]
+[ext_resource type="Texture2D" uid="uid://b17wsqidv4n3x" path="res://UIArt/ExitIcon.png" id="13_gbgqp"]
+[ext_resource type="Texture2D" uid="uid://cau4bua1ogggq" path="res://UIArt/ExitIconHover.png" id="14_510ox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx832"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujn0y"]
+bg_color = Color(0, 0, 0, 0.290196)
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yah11"]
 bg_color = Color(0, 0, 0, 0.239216)
+corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_gxmgg"]
 font_size = 50
@@ -177,6 +195,19 @@ Button/styles/focus = SubResource("StyleBoxFlat_8ixk5")
 Button/styles/hover = SubResource("StyleBoxFlat_8m66h")
 Button/styles/normal = SubResource("StyleBoxFlat_1xclb")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rf2po"]
+bg_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8f3j"]
+bg_color = Color(1, 1, 1, 0.141176)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpfic"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_osbsf"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_dpfic")
+
 [node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "screenshot_container")]
 layout_mode = 3
 anchors_preset = 15
@@ -188,9 +219,9 @@ offset_right = -4.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w1pu6")
-game_panel = ExtResource("2_2tpj6")
-screenshot_panel = ExtResource("5_7wwmm")
+script = ExtResource("1_ueker")
+game_panel = ExtResource("2_mdwpe")
+screenshot_panel = ExtResource("3_6basi")
 games_list = NodePath("HSplitContainer/GameListPanel/ScrollContainer/VBoxContainer")
 display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/Description")
 display_icon = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/TextureRect")
@@ -207,8 +238,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4.25
-offset_bottom = 2.96997
+offset_top = 43.0
+offset_right = 4.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 split_offset = 145
@@ -216,6 +248,7 @@ split_offset = 145
 [node name="GameListPanel" type="PanelContainer" parent="HSplitContainer"]
 clip_contents = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yx832")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/GameListPanel"]
 layout_mode = 2
@@ -229,6 +262,7 @@ theme_override_constants/separation = 9
 [node name="GameInfoPanel" type="Panel" parent="HSplitContainer"]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ujn0y")
 
 [node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer/GameInfoPanel"]
 layout_mode = 1
@@ -260,7 +294,7 @@ custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-texture = ExtResource("2_w7yyq")
+texture = ExtResource("4_dhwsy")
 expand_mode = 3
 
 [node name="Label" type="Label" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer"]
@@ -276,7 +310,7 @@ text_overrun_behavior = 3
 [node name="Background" type="TextureRect" parent="HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer"]
 z_index = -1
 layout_mode = 2
-texture = ExtResource("4_2y63r")
+texture = ExtResource("5_2ycfk")
 expand_mode = 1
 stretch_mode = 6
 
@@ -389,35 +423,99 @@ size = Vector2i(368, 100)
 ok_button_text = "Yes"
 dialog_text = "Are you sure you want to uninstall this game?"
 
-[node name="ScreenshotPopup" type="Window" parent="."]
-disable_3d = true
-snap_2d_vertices_to_pixel = true
-canvas_item_default_texture_filter = 0
-title = "Screenshot"
-position = Vector2i(180, 90)
-size = Vector2i(869, 449)
+[node name="ScreenshotPopup" type="PanelContainer" parent="."]
 visible = false
-wrap_controls = true
-transient = true
-exclusive = true
-unresizable = true
-always_on_top = true
-popup_window = true
+z_index = 3
+layout_mode = 0
+offset_left = 185.0
+offset_top = 66.0
+offset_right = 1025.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_rf2po")
 
-[node name="TextureRect" type="TextureRect" parent="ScreenshotPopup"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_u7djn")
+[node name="VBoxContainer" type="VBoxContainer" parent="ScreenshotPopup"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="ScreenshotPopup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b8f3j")
+
+[node name="TextureButton" type="TextureButton" parent="ScreenshotPopup/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+texture_normal = ExtResource("7_p7dyr")
+texture_pressed = ExtResource("6_lb3r5")
+texture_hover = ExtResource("7_p7dyr")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="ScreenshotPopup/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_nmrpw")
 expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
+
+[node name="Titlebar" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1157.0
+offset_bottom = 43.0
+theme = SubResource("Theme_osbsf")
+script = ExtResource("9_k5gd2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Titlebar"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Titlebar/MarginContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="MinimizeButton" type="TextureButton" parent="Titlebar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36.5, 0)
+layout_mode = 2
+texture_normal = ExtResource("9_e6v2w")
+texture_hover = ExtResource("10_dnwn3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WindowedToggleButton" type="TextureButton" parent="Titlebar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36.5, 0)
+layout_mode = 2
+texture_normal = ExtResource("11_5j8ed")
+texture_hover = ExtResource("12_fgn12")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ExitButton" type="TextureButton" parent="Titlebar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36.5, 0)
+layout_mode = 2
+texture_normal = ExtResource("13_gbgqp")
+texture_hover = ExtResource("14_510ox")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Titlebar/MarginContainer"]
+layout_mode = 2
+text = "Doogler Launcher"
 
 [connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="launch_selected_game"]
 [connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2" to="." method="launch_selected_game"]
 [connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/InstallButton" to="." method="install_selected_game"]
 [connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton" to="." method="show_uninstall_confirm"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="uninstall_current_game"]
-[connection signal="close_requested" from="ScreenshotPopup" to="." method="_on_screenshot_popup_close_requested"]
+[connection signal="pressed" from="ScreenshotPopup/VBoxContainer/PanelContainer/TextureButton" to="." method="_on_screenshot_popup_close_requested"]
+[connection signal="gui_input" from="Titlebar" to="Titlebar" method="_on_gui_input"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/MinimizeButton" to="Titlebar" method="_on_minimize_button_pressed"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/WindowedToggleButton" to="Titlebar" method="_on_windowed_button_pressed"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/ExitButton" to="Titlebar" method="_on_exit_button_pressed"]

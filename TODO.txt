@@ -1,3 +1,2 @@
-Fix blurry screenshots in the popup
 Add support for games that are more than one file
 Add more games to the library
