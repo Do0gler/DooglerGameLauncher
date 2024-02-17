@@ -10,6 +10,7 @@ file_size_mb = 2.49
 download_path = "http://dl.dropboxusercontent.com/scl/fi/aumag6e1qwj510219jlkx/Text-Console.html?rlkey=pe9u6bc3dduza43gs3tg49ewh&dl=0"
 game_name = "Text Console"
 file_name = "Text-Console.html"
+game_file_name = "Text-Console.html"
 description = "-Type whatever in the console-
 If you press up arrow while not typing it inputs your last command
 -list of commands-
@@ -26,3 +27,4 @@ If you press up arrow while not typing it inputs your last command
 If you input an unidentified key it will output as an underscore"
 icon = ExtResource("2_ce252")
 background = ExtResource("1_y1r4t")
+screenshots = Array[Texture2D]([])

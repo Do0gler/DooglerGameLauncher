@@ -10,6 +10,7 @@ file_size_mb = 2.29
 download_path = "http://dl.dropboxusercontent.com/scl/fi/hl23m1tzv0f1q5cp4hp2i/Mighty-Space-Ranger.html?rlkey=7p8tcnxyzkdmpyku2ijvzibsq&dl=0"
 game_name = "Mighty Space Ranger"
 file_name = "Mighty Space Ranger.html"
+game_file_name = "Mighty Space Ranger.html"
 description = "-Controls-
 Press Spacebar To Shoot
 Arrow Keys to Move
@@ -22,3 +23,4 @@ Take Damage: -50 Score
 There is no end, just get the highest score possible."
 icon = ExtResource("2_533c6")
 background = ExtResource("1_unmyo")
+screenshots = Array[Texture2D]([])

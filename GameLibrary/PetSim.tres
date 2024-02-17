@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://7xq8r6wtl84w"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_oni3p"]
+[ext_resource type="Texture2D" uid="uid://bt78b1kacf4lj" path="res://GameArt/PetSim/PetGameBG.png" id="1_vlmjn"]
+[ext_resource type="Texture2D" uid="uid://d1g2q7qrytn0d" path="res://GameArt/PetSim/PetGameIcon.png" id="2_ppows"]
+
+[resource]
+script = ExtResource("1_oni3p")
+file_size_mb = 28.81
+download_path = "http://dl.dropboxusercontent.com/scl/fi/bzqt7n9h82vavnv82xne0/PetSim.zip?rlkey=1jc9ons09pepzumbcqatph6ka&dl=0"
+game_name = "Pet Simulator"
+file_name = "PetSim.zip"
+game_file_name = "PetSim.exe"
+description = "unfinished pet simulator"
+icon = ExtResource("2_ppows")
+background = ExtResource("1_vlmjn")
+screenshots = Array[Texture2D]([])

@@ -10,8 +10,10 @@ file_size_mb = 14.87
 download_path = "http://dl.dropboxusercontent.com/scl/fi/1n1o94510hgk4obakcxb4/RoboRapBattle.html?rlkey=y4s6c3zy9hi287fw33hke712j&dl=0"
 game_name = "Robo Rap Battle"
 file_name = "RoboRapBattle.html"
+game_file_name = "RoboRapBattle.html"
 description = "--Controls--
 WASD or Arrow Keys (or both)
 Space to Confirm/Press"
 icon = ExtResource("2_woabc")
 background = ExtResource("1_d0c0t")
+screenshots = Array[Texture2D]([])

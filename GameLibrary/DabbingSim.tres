@@ -10,6 +10,7 @@ file_size_mb = 13.56
 download_path = "http://dl.dropboxusercontent.com/scl/fi/5ywb3xvwoh996rnvvqubx/Dabbing-simulator-20XX.html?rlkey=yp6yzxdc6m1xx64ijxj6vu9d3&dl=0"
 game_name = "Dabbing Simulator 20XX"
 file_name = "DabbingSimulator20XX.html"
+game_file_name = "DabbingSimulator20XX.html"
 description = "press Space to dab
 -------------------------------------------------------------------------
 each time you dab you gain a point, use the points to buy cosmetics and backgrounds for your David
@@ -17,3 +18,4 @@ each time you dab you gain a point, use the points to buy cosmetics and backgrou
 ------------------------------------------------------------------------"
 icon = ExtResource("2_kuvd7")
 background = ExtResource("1_00kjb")
+screenshots = Array[Texture2D]([])

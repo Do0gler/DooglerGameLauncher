@@ -10,6 +10,7 @@ file_size_mb = 7.11
 download_path = "http://dl.dropboxusercontent.com/scl/fi/sj1b6hh89vvbrur7tx7zq/Drive-Zombie.html?rlkey=sinx6qb7f2nniw46x72lvk0zp&dl=0"
 game_name = "Drive! Zombie"
 file_name = "Drive-Zombie.html"
+game_file_name = "Drive-Zombie.html"
 description = "Move your mouse to go (the car will follow your mouse)
 -------------------------------------------------------------------------
 Drive away from the zombie he will kill you
@@ -18,3 +19,4 @@ Your goal is to collect coins without running out of gas
 To get gas you have to collect the gas canisters"
 icon = ExtResource("2_df6xy")
 background = ExtResource("1_7nwd6")
+screenshots = Array[Texture2D]([])

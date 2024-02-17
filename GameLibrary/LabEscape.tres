@@ -10,8 +10,10 @@ file_size_mb = 2.65
 download_path = "http://dl.dropboxusercontent.com/scl/fi/xkbf8qu0s4yps92pyz3pd/Lab-Escape.html?rlkey=218gwmstzy8hprmfljo002ce9&dl=0"
 game_name = "Lab Escape"
 file_name = "Lab-Escape.html"
+game_file_name = "Lab-Escape.html"
 description = "Unfinished platformer
 ===================
 Arrow Keys to move"
 icon = ExtResource("1_kexsg")
 background = ExtResource("1_t26vi")
+screenshots = Array[Texture2D]([])

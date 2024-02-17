@@ -13,6 +13,7 @@ file_size_mb = 68.93
 download_path = "http://dl.dropboxusercontent.com/scl/fi/eohggymlkqciwmhskbmpq/OAF.exe?rlkey=7vbaikbi8o5c7vjbfmas4xdo6&dl=0"
 game_name = "O.A.F"
 file_name = "OAF.exe"
+game_file_name = "OAF.exe"
 description = "WASD To Move/control UI
 
 Space or Shift to move slowly

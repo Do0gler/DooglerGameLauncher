@@ -1,2 +1,3 @@
-Add support for games that are more than one file
 Add more games to the library
+Add window resizing
+Add window drag in windowed fullscreen

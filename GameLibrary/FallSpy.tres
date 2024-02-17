@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://bjml2lpswd1rq"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_5405p"]
+[ext_resource type="Texture2D" uid="uid://cbcpvjg3uyo22" path="res://GameArt/FallSpy/FallSpyBG.png" id="1_mjwn6"]
+[ext_resource type="Texture2D" uid="uid://dejlqk3ydx0al" path="res://GameArt/FallSpy/FallSpyIcon.png" id="2_d7am1"]
+
+[resource]
+script = ExtResource("1_5405p")
+file_size_mb = 20.46
+download_path = "http://dl.dropboxusercontent.com/scl/fi/duqmhrv0pd5c3j27672m1/Fall-Spy.zip?rlkey=3tbihme6mh0ucos5apfs1vfry&dl=0"
+game_name = "Fall Spy"
+file_name = "Fall-Spy.zip"
+game_file_name = "Fall Spy.exe"
+description = "You are a secret agent who has fallen into a complex cave, use your trusty gun to parkour your way out!"
+icon = ExtResource("2_d7am1")
+background = ExtResource("1_mjwn6")
+screenshots = Array[Texture2D]([])

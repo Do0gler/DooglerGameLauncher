@@ -10,6 +10,7 @@ file_size_mb = 7.79
 download_path = "http://dl.dropboxusercontent.com/scl/fi/0smp4wcjrgtuufrxhtsk2/Killer-Rythmn.html?rlkey=huxxnfjm48ox1sao4j9gfo8mj&dl=0"
 game_name = "Killer Rythmn!"
 file_name = "Killer-Rythmn.html"
+game_file_name = "Killer-Rythmn.html"
 description = "=====CONTROLS=====
 WASD or Arrow Keys (or both if ur cool)
 Space to Confirm/Press
@@ -17,3 +18,4 @@ Space to Confirm/Press
 Mobile mode is kinda broken"
 icon = ExtResource("1_pxk3u")
 background = ExtResource("1_d8djn")
+screenshots = Array[Texture2D]([])

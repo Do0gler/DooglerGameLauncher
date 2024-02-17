@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=8 format=3 uid="uid://dretg2nqgj2vs"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_4ph0x"]
+[ext_resource type="Texture2D" uid="uid://df824qp0ys0s4" path="res://GameArt/RoboEscape/RoboEscapeScreenshot1.png" id="1_pvhdr"]
+[ext_resource type="Texture2D" uid="uid://dc0idy3arc0ku" path="res://GameArt/RoboEscape/Icon Cover.png" id="1_sb55i"]
+[ext_resource type="Texture2D" uid="uid://cllpgakry8ov2" path="res://GameArt/RoboEscape/RoboEscapeIcon.png" id="2_ff1mc"]
+[ext_resource type="Texture2D" uid="uid://cvndmpa34xr36" path="res://GameArt/RoboEscape/RoboEscapeScreenshot2.png" id="2_v6w70"]
+[ext_resource type="Texture2D" uid="uid://cdpruwoxgc7dm" path="res://GameArt/RoboEscape/RoboEscapeScreenshot3.png" id="3_2mh1e"]
+[ext_resource type="Texture2D" uid="uid://c3d4jlhw7sfjs" path="res://GameArt/RoboEscape/RoboEscapeScreenshot4.png" id="4_cuqvk"]
+
+[resource]
+script = ExtResource("1_4ph0x")
+file_size_mb = 34.91
+download_path = "http://dl.dropboxusercontent.com/scl/fi/oufxyttmk9dz8vmfxxwjm/RoboEscape.zip?rlkey=3w5zz37n8z1v4dixd67pxhan6&dl=0"
+game_name = "Robo-Escape"
+file_name = "RoboEscape.zip"
+game_file_name = "FallSpyRemake.exe"
+description = "A remake of Fall Spy
+=Controls=
+A & D to move
+Spacebar or W to jump
+Arrow Keys for directional boosting
+Q to pause"
+icon = ExtResource("2_ff1mc")
+background = ExtResource("1_sb55i")
+screenshots = Array[Texture2D]([ExtResource("1_pvhdr"), ExtResource("2_v6w70"), ExtResource("3_2mh1e"), ExtResource("4_cuqvk")])

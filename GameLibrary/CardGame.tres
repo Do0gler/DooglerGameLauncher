@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://bpdkhlox4qlv7"]
+
+[ext_resource type="Texture2D" uid="uid://47ivw0srgi6i" path="res://GameArt/CardGame/CardGameBackGround.png" id="1_mofe7"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_qk0or"]
+[ext_resource type="Texture2D" uid="uid://dgfonk3o67fps" path="res://GameArt/CardGame/CardGameIcon.png" id="2_l7cbm"]
+
+[resource]
+script = ExtResource("1_qk0or")
+file_size_mb = 19.63
+download_path = "http://dl.dropboxusercontent.com/scl/fi/cnfsq4j00rlo0jptn0iqy/Card-Game.zip?rlkey=0m2wacp5juevmlnnkwxhb4n3v&dl=0"
+game_name = "Card Game"
+file_name = "Card-Game.zip"
+game_file_name = "Card Game.exe"
+description = "A unity remake of Card Game (scratch)
+Click the cards in order of highest to lowest
+Get the highscore!"
+icon = ExtResource("2_l7cbm")
+background = ExtResource("1_mofe7")
+screenshots = Array[Texture2D]([])

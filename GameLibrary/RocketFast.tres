@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=7 format=3 uid="uid://q5tda35pysph"]
+
+[ext_resource type="Texture2D" uid="uid://bvxsc02u3pkey" path="res://GameArt/RocketFast/RocketFastScreenshot1.png" id="1_408px"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_d1upc"]
+[ext_resource type="Texture2D" uid="uid://dgfwetqpgptin" path="res://GameArt/RocketFast/coverImage.png" id="1_upc7q"]
+[ext_resource type="Texture2D" uid="uid://1bfrf7kqgv3g" path="res://GameArt/RocketFast/RocketFastScreenshot2.png" id="2_0ei3b"]
+[ext_resource type="Texture2D" uid="uid://pboq131icomg" path="res://GameArt/RocketFast/rocket.png" id="2_1woir"]
+[ext_resource type="Texture2D" uid="uid://xf6sovqpblvp" path="res://GameArt/RocketFast/RocketFastScreenshot3.png" id="3_82qgh"]
+
+[resource]
+script = ExtResource("1_d1upc")
+file_size_mb = 30.31
+download_path = "http://dl.dropboxusercontent.com/scl/fi/tf8mbkhgixscghbhob6il/RocketFast.zip?rlkey=hwr3edf93fiq4jxwd4wum6199&dl=0"
+game_name = "Rocket Fast"
+file_name = "RocketFast.zip"
+game_file_name = "RocketFast.exe"
+description = "Controls
+
+Use LEFT and RIGHT to turn the rocket
+
+Use UP to boost
+
+Use DOWN to do the minor boost (if bought first)
+
+Goal
+
+    Go towards the arrow to pick up/deliver the package
+    Avoid the walls
+    Use the money from successful deliveries to buy upgrades and repairs
+"
+icon = ExtResource("2_1woir")
+background = ExtResource("1_upc7q")
+screenshots = Array[Texture2D]([ExtResource("1_408px"), ExtResource("2_0ei3b"), ExtResource("3_82qgh")])
