@@ -99,6 +99,7 @@ func install_selected_game():
 		install_button.hide()
 		uninstall_button.show()
 		new_game_file.close()
+		display_selected_game()
 
 func show_uninstall_confirm():
 	$ConfirmationDialog.show()
@@ -160,12 +161,27 @@ func display_selected_game():
 	var game_size : String
 	if dir:
 		if dir.file_exists(selected_game.game_file_name):
+			# Load game cached data if exists else calculate size and create cache
+			var cache_name = selected_game.file_name.get_basename() + "Cache.tres"
+			var cache_path = game_folder_path + "/" + cache_name
+			if dir.file_exists(cache_name):
+				FileAccess.open(cache_path, FileAccess.READ)
+				var res := ResourceLoader.load(cache_path)
+				game_size = str(res.game_size_mb)
+			else:
+				var size_mb := snappedf(recursive_size_game(game_folder_path) / 1000000.0, 0.01)
+				game_size = str(size_mb)
+				var cache := GameCache.new()
+				cache.game_size_mb = size_mb
+				cache.resource_name = cache_name
+				ResourceSaver.save(cache, cache_path)
+			#Show buttons
 			install_button.hide()
 			uninstall_button.show()
 	else:
+		game_size = str(selected_game.file_size_mb)
 		install_button.show()
 		uninstall_button.hide()
-	game_size = str(selected_game.file_size_mb)
 	display_description.text = "File Size: " + game_size + " MB\n" + selected_game.description
 
 func _on_screenshot_popup_open(screenshot_index):
@@ -211,3 +227,19 @@ func recursive_delete_game(dirPath):
 		fileName = dir.get_next()
 	dir.list_dir_end()
 	DirAccess.remove_absolute(dirPath)
+
+func recursive_size_game(dirPath):
+	var size_in_bytes = 0
+	var dir = DirAccess.open(dirPath)
+	dir.list_dir_begin()
+	var fileName = dir.get_next()
+	while fileName != "":
+		var filePath = dirPath + "/" + fileName
+		if dir.current_is_dir():
+			size_in_bytes += recursive_size_game(filePath)
+		else:
+			var file = FileAccess.open(filePath, FileAccess.READ)
+			size_in_bytes += file.get_length()
+		fileName = dir.get_next()
+	dir.list_dir_end()
+	return size_in_bytes

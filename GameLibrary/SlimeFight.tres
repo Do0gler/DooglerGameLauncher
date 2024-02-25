@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://cqkhhvk68efld"]
+
+[ext_resource type="Texture2D" uid="uid://dwena5jq1kyqw" path="res://GameArt/SlimeFight/SlimeFightBG.png" id="1_fv6dk"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_yqkyp"]
+[ext_resource type="Texture2D" uid="uid://ceagdmnmw4yur" path="res://GameArt/SlimeFight/SlimeFightIcon.png" id="2_d2cme"]
+
+[resource]
+script = ExtResource("1_yqkyp")
+file_size_mb = 2.21
+download_path = "http://dl.dropboxusercontent.com/scl/fi/tayfvfpbk7ztw5amlgk5b/Slime-Fight.html?rlkey=yibgxbqa407xrjfrdzs6kg0yg&dl=0"
+game_name = "Slime Fight!"
+file_name = "Slime-Fight.html"
+game_file_name = "Slime-Fight.html"
+description = "=Controls=
+A and D to move
+Spacebar to Jump 
+Click to attack (The attack aim to where you are pointing)
+========================================
+P.S -  The slime makes the ground unsafe when he lands from his high jump attack "
+icon = ExtResource("2_d2cme")
+background = ExtResource("1_fv6dk")
+screenshots = Array[Texture2D]([])

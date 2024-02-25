@@ -333,6 +333,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = SubResource("Theme_5vc6s")
 theme_override_font_sizes/font_size = 40
 text = "Start"
@@ -384,8 +385,7 @@ text = "Uninstall"
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/autohide = 0
-split_offset = 500
+split_offset = 70
 
 [node name="DescriptionContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -415,25 +415,19 @@ size_flags_vertical = 3
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 title = "Confirmation"
-initial_position = 2
+position = Vector2i(395, 275)
 size = Vector2i(368, 100)
-unresizable = true
 ok_button_text = "Yes"
 dialog_text = "Are you sure you want to uninstall this game?"
 
 [node name="ScreenshotPopup" type="PanelContainer" parent="."]
 visible = false
 z_index = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 177.0
-offset_top = 114.0
-offset_right = -147.0
-offset_bottom = -89.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 185.0
+offset_top = 66.0
+offset_right = 1025.0
+offset_bottom = 576.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rf2po")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScreenshotPopup"]
@@ -523,22 +517,13 @@ stretch_mode = 5
 layout_mode = 2
 text = "Doogler Launcher"
 
-[node name="Resizer" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ResizeVerticalBottom" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(0, 8)
+[node name="ResizeVerticalBottom" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
@@ -546,105 +531,29 @@ mouse_default_cursor_shape = 9
 script = ExtResource("17_nlgti")
 resize_direction = 1
 
-[node name="ResizeVerticalTop" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 4.0
-grow_horizontal = 2
-mouse_filter = 1
-mouse_default_cursor_shape = 9
-script = ExtResource("17_nlgti")
-primary_side = true
-resize_direction = 1
-
-[node name="ResizeHorizontalRight" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(8, 0)
+[node name="ResizeHorizontalRight" type="Control" parent="."]
+custom_minimum_size = Vector2(4, 0)
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 10
 script = ExtResource("17_nlgti")
 
-[node name="ResizeHorizontalLeft" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(8, 0)
+[node name="ResizeHorizontalLeft" type="Control" parent="."]
+custom_minimum_size = Vector2(4, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 4.0
 grow_vertical = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 10
 script = ExtResource("17_nlgti")
 primary_side = true
-
-[node name="ResizeDiagonalBR" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 1
-mouse_default_cursor_shape = 12
-script = ExtResource("17_nlgti")
-resize_direction = 2
-
-[node name="ResizeDiagonalTR" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
-grow_horizontal = 0
-mouse_filter = 1
-mouse_default_cursor_shape = 11
-script = ExtResource("17_nlgti")
-primary_side = true
-resize_direction = 2
-diagonal_corner = 1
-
-[node name="ResizeDiagonalBL" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -8.0
-offset_right = 8.0
-grow_vertical = 0
-mouse_filter = 1
-mouse_default_cursor_shape = 11
-script = ExtResource("17_nlgti")
-primary_side = true
-resize_direction = 2
-diagonal_corner = 3
-
-[node name="ResizeDiagonalTL" type="Control" parent="Resizer"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 1
-anchors_preset = 0
-offset_right = 8.0
-offset_bottom = 8.0
-mouse_filter = 1
-mouse_default_cursor_shape = 12
-script = ExtResource("17_nlgti")
-primary_side = true
-resize_direction = 2
-diagonal_corner = 2
 
 [connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="launch_selected_game"]
 [connection signal="pressed" from="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/StopButton2" to="." method="launch_selected_game"]
@@ -656,11 +565,6 @@ diagonal_corner = 2
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/MinimizeButton" to="Titlebar" method="_on_minimize_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/WindowedToggleButton" to="Titlebar" method="_on_windowed_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/ExitButton" to="Titlebar" method="_on_exit_button_pressed"]
-[connection signal="gui_input" from="Resizer/ResizeVerticalBottom" to="Resizer/ResizeVerticalBottom" method="_on_gui_input"]
-[connection signal="gui_input" from="Resizer/ResizeVerticalTop" to="Resizer/ResizeVerticalTop" method="_on_gui_input"]
-[connection signal="gui_input" from="Resizer/ResizeHorizontalRight" to="Resizer/ResizeHorizontalRight" method="_on_gui_input"]
-[connection signal="gui_input" from="Resizer/ResizeHorizontalLeft" to="Resizer/ResizeHorizontalLeft" method="_on_gui_input"]
-[connection signal="gui_input" from="Resizer/ResizeDiagonalBR" to="Resizer/ResizeDiagonalBR" method="_on_gui_input"]
-[connection signal="gui_input" from="Resizer/ResizeDiagonalTR" to="Resizer/ResizeDiagonalTR" method="_on_gui_input"]
-[connection signal="gui_input" from="Resizer/ResizeDiagonalBL" to="Resizer/ResizeDiagonalBL" method="_on_gui_input"]
-[connection signal="gui_input" from="Resizer/ResizeDiagonalTL" to="Resizer/ResizeDiagonalTL" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeVerticalBottom" to="ResizeVerticalBottom" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHorizontalRight" to="ResizeHorizontalRight" method="_on_gui_input"]
+[connection signal="gui_input" from="ResizeHorizontalLeft" to="ResizeHorizontalLeft" method="_on_gui_input"]
