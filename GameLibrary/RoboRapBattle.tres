@@ -14,6 +14,7 @@ game_file_name = "RoboRapBattle.html"
 description = "--Controls--
 WASD or Arrow Keys (or both)
 Space to Confirm/Press"
+creation_date = "04/07/2021"
 icon = ExtResource("2_woabc")
 background = ExtResource("1_d0c0t")
 screenshots = Array[Texture2D]([])

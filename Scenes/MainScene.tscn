@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://oec37qhorbfc"]
+[gd_scene load_steps=47 format=3 uid="uid://oec37qhorbfc"]
 
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_ueker"]
 [ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://Scenes/GamePanel.tscn" id="2_mdwpe"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://cau4bua1ogggq" path="res://UIArt/ExitIconHover.png" id="14_510ox"]
 [ext_resource type="Texture2D" uid="uid://c2tsvworqta0" path="res://DooglerLauncherIcon.png" id="16_ls8sd"]
 [ext_resource type="Script" path="res://Scripts/Resize.gd" id="17_nlgti"]
+[ext_resource type="Texture2D" uid="uid://px5xbmuat7t" path="res://UIArt/DisabledOrderIcon.png" id="18_e8lnr"]
+[ext_resource type="Script" path="res://Scripts/DropdownMenu.gd" id="18_l1ahk"]
+[ext_resource type="Script" path="res://Scripts/DropdownButton.gd" id="19_fdxr5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx832"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
@@ -209,6 +212,16 @@ corner_detail = 1
 
 [sub_resource type="Theme" id="Theme_osbsf"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_dpfic")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxe2g"]
+bg_color = Color(0, 0, 0, 0.133333)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy3jo"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uypm"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "screenshot_container")]
 layout_mode = 3
@@ -464,7 +477,7 @@ expand_mode = 3
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Titlebar" type="PanelContainer" parent="."]
+[node name="Titlebar" type="PanelContainer" parent="." node_paths=PackedStringArray("resize_controls")]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 10
@@ -473,6 +486,7 @@ offset_bottom = 40.0
 grow_horizontal = 2
 theme = SubResource("Theme_osbsf")
 script = ExtResource("9_k5gd2")
+resize_controls = NodePath("../Resizer")
 
 [node name="MarginContainer" type="MarginContainer" parent="Titlebar"]
 layout_mode = 2
@@ -522,6 +536,62 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="Titlebar/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Doogler Launcher"
+
+[node name="DropoutMenu" type="Panel" parent="Titlebar/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(108.44, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sxe2g")
+script = ExtResource("18_l1ahk")
+
+[node name="Label" type="Label" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sort"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubItemsContainer" type="PanelContainer" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu"]
+visible = false
+layout_mode = 2
+offset_top = 40.0
+offset_right = 173.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oy3jo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer"]
+layout_mode = 2
+
+[node name="AlphabetSortButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer" groups=["SortButtons"]]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+toggle_mode = true
+text = "Alphabetical"
+icon = ExtResource("18_e8lnr")
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("19_fdxr5")
+
+[node name="DateSortButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer" groups=["SortButtons"]]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+toggle_mode = true
+text = "Date"
+icon = ExtResource("18_e8lnr")
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("19_fdxr5")
 
 [node name="Resizer" type="Control" parent="."]
 layout_mode = 1
@@ -656,6 +726,11 @@ diagonal_corner = 2
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/MinimizeButton" to="Titlebar" method="_on_minimize_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/WindowedToggleButton" to="Titlebar" method="_on_windowed_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/ExitButton" to="Titlebar" method="_on_exit_button_pressed"]
+[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu" to="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu" method="_on_gui_input"]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="." method="sort_default"]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" method="toggle_sort_order"]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="." method="sort_by_date"]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/DateSortButton" method="toggle_sort_order"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalBottom" to="Resizer/ResizeVerticalBottom" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalTop" to="Resizer/ResizeVerticalTop" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeHorizontalRight" to="Resizer/ResizeHorizontalRight" method="_on_gui_input"]

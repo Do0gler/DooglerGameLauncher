@@ -17,6 +17,7 @@ Drive away from the zombie he will kill you
 Your goal is to collect coins without running out of gas
 -------------------------------------------------------------------------
 To get gas you have to collect the gas canisters"
+creation_date = "02/25/2020"
 icon = ExtResource("2_df6xy")
 background = ExtResource("1_7nwd6")
 screenshots = Array[Texture2D]([])

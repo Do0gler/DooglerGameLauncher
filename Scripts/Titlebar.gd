@@ -2,6 +2,7 @@ extends PanelContainer
 
 var following = false
 var dragging_start_pos : Vector2
+@export var resize_controls : Node
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton:
@@ -26,8 +27,10 @@ func _on_windowed_button_pressed():
 	# Toggle windowed mode
 	if get_window().mode == Window.MODE_WINDOWED:
 		get_window().mode = Window.MODE_FULLSCREEN
+		resize_controls.hide()
 	else:
 		get_window().mode = Window.MODE_WINDOWED
+		resize_controls.show()
 
 
 func _on_minimize_button_pressed():

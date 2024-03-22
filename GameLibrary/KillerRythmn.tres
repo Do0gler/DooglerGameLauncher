@@ -19,6 +19,7 @@ WASD or Arrow Keys (or both if ur cool)
 Space to Confirm/Press
 =====OTHER=====
 Mobile mode is kinda broken"
+creation_date = "11/15/2021"
 icon = ExtResource("1_pxk3u")
 background = ExtResource("1_d8djn")
 screenshots = Array[Texture2D]([ExtResource("3_l7uhc"), ExtResource("4_vh7vc"), ExtResource("5_6ct3h")])

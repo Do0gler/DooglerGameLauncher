@@ -6,6 +6,7 @@ var library_folder_name : String = "DooglerGamesLibrary"
 var selected_game : Game_Data
 var current_game_pid = 0
 var game_launched = false
+var game_order : Array[Game_Data]
 var can_switch_games = true
 var launched_game_is_exe = false
 var downloading = false
@@ -22,6 +23,7 @@ var http : HTTPRequest
 @export var screenshot_container : Node
 
 func _ready():
+	game_order = GameOrganizer.get_default_order()
 	var dir = DirAccess.open("user://")
 	if(!dir.dir_exists(library_folder_name)):
 		dir.make_dir(library_folder_name)
@@ -41,25 +43,20 @@ func _process(_delta):
 		progress_bar.value = percent
 
 func display_games():
+	var games_in_list = games_list.get_children()
+	if games_in_list.size() > 0:
+		for game in games_in_list:
+			game.queue_free()
 	var i = 0
-	var dir = DirAccess.open("res://GameLibrary")
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if !dir.current_is_dir():
-				var new_game_panel = game_panel.instantiate()
-				var file = load("res://GameLibrary/" + file_name.replace(".remap",""))
-				games_list.add_child(new_game_panel)
-				new_game_panel.game_data = file
-				if i == 0:
-					selected_game = file
-					display_selected_game()
-				new_game_panel.update_display()
-			file_name = dir.get_next()
-			i += 1
-	else:
-		print("An error occurred when trying to access the path.") 
+	for game in game_order:
+		var new_game_panel = game_panel.instantiate()
+		games_list.add_child(new_game_panel)
+		new_game_panel.game_data = game
+		if i == 0:
+			selected_game = game
+			display_selected_game()
+		i +=1
+		new_game_panel.update_display()
 
 func set_current_game(game_data : Game_Data):
 	if can_switch_games:
@@ -182,7 +179,8 @@ func display_selected_game():
 		game_size = str(selected_game.file_size_mb)
 		install_button.show()
 		uninstall_button.hide()
-	display_description.text = "File Size: " + game_size + " MB\n" + selected_game.description
+	var format = "File Size: %s MB\nDate Created: %s\n%s"
+	display_description.text = format % [game_size, selected_game.creation_date, selected_game.description]
 
 func _on_screenshot_popup_open(screenshot_index):
 	var screenshot_tex = $ScreenshotPopup/VBoxContainer/TextureRect
@@ -227,6 +225,20 @@ func recursive_delete_game(dirPath):
 		fileName = dir.get_next()
 	dir.list_dir_end()
 	DirAccess.remove_absolute(dirPath)
+
+func sort_default(reversed := true):
+	game_order = GameOrganizer.get_default_order()
+	if reversed:
+		game_order.reverse()
+	display_games()
+	get_tree().call_group("SortButtons","set_sort_disabled")
+
+func sort_by_date(reversed := true):
+	game_order = GameOrganizer.sort_by_date(game_order)
+	if reversed:
+		game_order.reverse()
+	display_games()
+	get_tree().call_group("SortButtons","set_sort_disabled")
 
 func recursive_size_game(dirPath):
 	var size_in_bytes = 0

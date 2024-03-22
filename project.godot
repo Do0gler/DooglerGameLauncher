@@ -14,8 +14,13 @@ config/name="Doogler Launcher"
 run/main_scene="res://Scenes/MainScene.tscn"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.1", "GL Compatibility")
+run/low_processor_mode=true
 boot_splash/image="res://UIArt/DooglerLauncherSplash.png"
 config/icon="res://DooglerLauncherIcon.png"
+
+[autoload]
+
+GameOrganizer="*res://Scripts/GameOrganizer.gd"
 
 [display]
 

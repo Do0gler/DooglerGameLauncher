@@ -23,6 +23,7 @@ WASD to move
 ARROW KEYS to shoot
 Q to pause or go back
 E to interact"
+creation_date = "02/03/2022"
 icon = ExtResource("2_lxn37")
 background = ExtResource("1_k3tcl")
 screenshots = Array[Texture2D]([ExtResource("3_xm4dq"), ExtResource("4_47i7g"), ExtResource("5_x2hg6")])

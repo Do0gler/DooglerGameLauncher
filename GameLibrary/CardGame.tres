@@ -14,6 +14,7 @@ game_file_name = "Card Game.exe"
 description = "A unity remake of Card Game (scratch)
 Click the cards in order of highest to lowest
 Get the highscore!"
+creation_date = "08/31/2020"
 icon = ExtResource("2_l7cbm")
 background = ExtResource("1_mofe7")
 screenshots = Array[Texture2D]([])
