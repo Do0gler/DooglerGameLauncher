@@ -17,6 +17,7 @@ W A S D to Move
 Arrow Keys To Shoot
 Collect Coins and Kill all the enemies to advance  to the next round
 Try to get a High-Score"
+engine = "Scratch"
 creation_date = "04/02/2021"
 icon = ExtResource("2_tun8a")
 background = ExtResource("1_2ursq")

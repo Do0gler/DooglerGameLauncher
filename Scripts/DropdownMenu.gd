@@ -6,3 +6,7 @@ func _on_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
 			$SubItemsContainer.visible = !$SubItemsContainer.visible
+
+
+func _on_focus_exited():
+	$SubItemsContainer.visible = false

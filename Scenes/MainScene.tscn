@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://oec37qhorbfc"]
+[gd_scene load_steps=50 format=3 uid="uid://oec37qhorbfc"]
 
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_ueker"]
 [ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://Scenes/GamePanel.tscn" id="2_mdwpe"]
 [ext_resource type="PackedScene" uid="uid://bugfw5kivabqq" path="res://Scenes/Screenshot.tscn" id="3_6basi"]
 [ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="4_dhwsy"]
+[ext_resource type="PackedScene" uid="uid://bq4ol1xr5qgh0" path="res://Scenes/ExpandableList.tscn" id="4_duvmm"]
 [ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="5_2ycfk"]
 [ext_resource type="Texture2D" uid="uid://8e1tc1it83oc" path="res://UIArt/XIcon.png" id="6_lb3r5"]
 [ext_resource type="Texture2D" uid="uid://bb7qyspm4evkm" path="res://GameArt/4WizRemake/4WizScreenshot1.png" id="6_nmrpw"]
@@ -20,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://px5xbmuat7t" path="res://UIArt/DisabledOrderIcon.png" id="18_e8lnr"]
 [ext_resource type="Script" path="res://Scripts/DropdownMenu.gd" id="18_l1ahk"]
 [ext_resource type="Script" path="res://Scripts/DropdownButton.gd" id="19_fdxr5"]
+[ext_resource type="Script" path="res://Scripts/TwoStateButton.gd" id="21_rxa5c"]
+[ext_resource type="Texture2D" uid="uid://cl6b1j1i7rfkf" path="res://UIArt/CheckIcon.png" id="22_n0w4d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx832"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
@@ -233,6 +236,7 @@ grow_vertical = 2
 script = ExtResource("1_ueker")
 game_panel = ExtResource("2_mdwpe")
 screenshot_panel = ExtResource("3_6basi")
+expandable_list = ExtResource("4_duvmm")
 games_list = NodePath("HSplitContainer/GameListPanel/ScrollContainer/VBoxContainer")
 display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/Description")
 display_icon = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/TextureRect")
@@ -257,6 +261,7 @@ split_offset = 145
 
 [node name="GameListPanel" type="PanelContainer" parent="HSplitContainer"]
 clip_contents = true
+custom_minimum_size = Vector2(190, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yx832")
 
@@ -267,7 +272,7 @@ horizontal_scroll_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/GameListPanel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 9
+theme_override_constants/separation = 0
 
 [node name="GameInfoPanel" type="Panel" parent="HSplitContainer"]
 custom_minimum_size = Vector2(560, 0)
@@ -346,6 +351,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_5vc6s")
 theme_override_font_sizes/font_size = 40
 text = "Start"
@@ -359,6 +365,7 @@ offset_right = 200.0
 offset_bottom = 80.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_fvkd8")
 theme_override_font_sizes/font_size = 40
 text = "Stop"
@@ -370,6 +377,7 @@ offset_right = 200.0
 offset_bottom = 80.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_w34vx")
 theme_override_font_sizes/font_size = 40
 text = "Install"
@@ -389,6 +397,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 theme = SubResource("Theme_efhu5")
 theme_override_font_sizes/font_size = 40
 text = "Uninstall"
@@ -441,10 +450,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 177.0
-offset_top = 114.0
-offset_right = -147.0
-offset_bottom = -89.0
+offset_left = 210.0
+offset_top = 132.0
+offset_right = -204.0
+offset_bottom = -133.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rf2po")
@@ -473,7 +482,7 @@ custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("6_nmrpw")
-expand_mode = 3
+expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
@@ -526,6 +535,7 @@ stretch_mode = 5
 [node name="HBoxContainer2" type="HBoxContainer" parent="Titlebar/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/separation = 11
 
 [node name="LauncherIcon" type="TextureRect" parent="Titlebar/MarginContainer/HBoxContainer2"]
 layout_mode = 2
@@ -537,13 +547,19 @@ stretch_mode = 5
 layout_mode = 2
 text = "Doogler Launcher"
 
-[node name="DropoutMenu" type="Panel" parent="Titlebar/MarginContainer/HBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Titlebar/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="DropdownMenu" type="Panel" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(108.44, 0)
 layout_mode = 2
+focus_mode = 1
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sxe2g")
 script = ExtResource("18_l1ahk")
 
-[node name="Label" type="Label" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu"]
+[node name="Label" type="Label" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -554,7 +570,7 @@ text = "Sort"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SubItemsContainer" type="PanelContainer" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu"]
+[node name="SubItemsContainer" type="PanelContainer" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu"]
 visible = false
 layout_mode = 2
 offset_top = 40.0
@@ -562,12 +578,14 @@ offset_right = 173.0
 offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_oy3jo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer"]
 layout_mode = 2
 
-[node name="AlphabetSortButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer" groups=["SortButtons"]]
+[node name="AlphabetSortButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer" groups=["SortButtons"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
@@ -579,9 +597,11 @@ icon_alignment = 2
 expand_icon = true
 script = ExtResource("19_fdxr5")
 
-[node name="DateSortButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer" groups=["SortButtons"]]
+[node name="DateSortButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer" groups=["SortButtons"]]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
@@ -592,6 +612,63 @@ icon = ExtResource("18_e8lnr")
 icon_alignment = 2
 expand_icon = true
 script = ExtResource("19_fdxr5")
+
+[node name="DropdownMenu2" type="Panel" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(108.44, 0)
+layout_mode = 2
+focus_mode = 1
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sxe2g")
+script = ExtResource("18_l1ahk")
+
+[node name="Label" type="Label" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Group"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubItemsContainer" type="PanelContainer" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2"]
+visible = false
+layout_mode = 2
+offset_top = 40.0
+offset_right = 173.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oy3jo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer"]
+layout_mode = 2
+
+[node name="AllGroupButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer" groups=["GroupButtons"]]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "All"
+icon = ExtResource("18_e8lnr")
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("21_rxa5c")
+on_icon = ExtResource("22_n0w4d")
+off_icon = ExtResource("18_e8lnr")
+state = true
+
+[node name="EngineGroupButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer" groups=["GroupButtons"]]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Engine"
+icon = ExtResource("18_e8lnr")
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("21_rxa5c")
+on_icon = ExtResource("22_n0w4d")
+off_icon = ExtResource("18_e8lnr")
 
 [node name="Resizer" type="Control" parent="."]
 layout_mode = 1
@@ -726,11 +803,18 @@ diagonal_corner = 2
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/MinimizeButton" to="Titlebar" method="_on_minimize_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/WindowedToggleButton" to="Titlebar" method="_on_windowed_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/ExitButton" to="Titlebar" method="_on_exit_button_pressed"]
-[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu" to="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu" method="_on_gui_input"]
-[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="." method="sort_default"]
-[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" method="toggle_sort_order"]
-[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="." method="sort_by_date"]
-[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="Titlebar/MarginContainer/HBoxContainer2/DropoutMenu/SubItemsContainer/VBoxContainer/DateSortButton" method="toggle_sort_order"]
+[connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_focus_exited" flags=18]
+[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_gui_input" flags=18]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="." method="sort_default"]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" method="toggle_sort_order" flags=18]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="." method="sort_by_date"]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" method="toggle_sort_order" flags=18]
+[connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_focus_exited" flags=18]
+[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_gui_input" flags=18]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" to="." method="group_by_default"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" method="toggle_state"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" to="." method="group_by_engine"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" method="toggle_state"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalBottom" to="Resizer/ResizeVerticalBottom" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalTop" to="Resizer/ResizeVerticalTop" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeHorizontalRight" to="Resizer/ResizeHorizontalRight" method="_on_gui_input"]

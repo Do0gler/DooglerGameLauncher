@@ -2,15 +2,19 @@ extends Control
 
 @export var game_panel : PackedScene
 @export var screenshot_panel : PackedScene
+@export var expandable_list : PackedScene
 var library_folder_name : String = "DooglerGamesLibrary"
 var selected_game : Game_Data
 var current_game_pid = 0
 var game_launched = false
-var game_order : Array[Game_Data]
+var default_game_order : Array
+var all_games : Dictionary
 var can_switch_games = true
 var launched_game_is_exe = false
 var downloading = false
 var http : HTTPRequest
+var sorting_method : Callable = sort_default
+var sorting_method_reversed := false
 @export var games_list : Node
 @export var display_description : Node
 @export var display_icon : Node
@@ -23,7 +27,8 @@ var http : HTTPRequest
 @export var screenshot_container : Node
 
 func _ready():
-	game_order = GameOrganizer.get_default_order()
+	default_game_order = GameOrganizer.get_default_order()
+	all_games = GameOrganizer.categorize_by_default(default_game_order)
 	var dir = DirAccess.open("user://")
 	if(!dir.dir_exists(library_folder_name)):
 		dir.make_dir(library_folder_name)
@@ -48,15 +53,21 @@ func display_games():
 		for game in games_in_list:
 			game.queue_free()
 	var i = 0
-	for game in game_order:
-		var new_game_panel = game_panel.instantiate()
-		games_list.add_child(new_game_panel)
-		new_game_panel.game_data = game
-		if i == 0:
-			selected_game = game
-			display_selected_game()
-		i +=1
-		new_game_panel.update_display()
+	for key in all_games:
+		var new_list = expandable_list.instantiate()
+		var new_list_script = new_list.get_child(0)
+		new_list_script.list_name = key
+		games_list.add_child(new_list)
+		for game in all_games[key]:
+			var new_game_panel = game_panel.instantiate()
+			new_list_script.add_item(new_game_panel)
+			new_game_panel.game_data = game
+			if i == 0:
+				selected_game = game
+				display_selected_game()
+			i += 1
+			new_game_panel.update_display()
+		new_list_script.update_visuals()
 
 func set_current_game(game_data : Game_Data):
 	if can_switch_games:
@@ -227,19 +238,39 @@ func recursive_delete_game(dirPath):
 	DirAccess.remove_absolute(dirPath)
 
 func sort_default(reversed := true):
-	game_order = GameOrganizer.get_default_order()
-	if reversed:
-		game_order.reverse()
+	for category in all_games:
+		var sorted_game_list = GameOrganizer.sort_by_name(all_games[category])
+		if reversed:
+			sorted_game_list.reverse()
+		all_games[category] = sorted_game_list
 	display_games()
 	get_tree().call_group("SortButtons","set_sort_disabled")
+	sorting_method = sort_default
+	sorting_method_reversed = reversed
 
 func sort_by_date(reversed := true):
-	game_order = GameOrganizer.sort_by_date(game_order)
-	if reversed:
-		game_order.reverse()
+	for category in all_games:
+		var sorted_game_list = GameOrganizer.sort_by_date(all_games[category])
+		if reversed:
+			sorted_game_list.reverse()
+		all_games[category] = sorted_game_list
 	display_games()
 	get_tree().call_group("SortButtons","set_sort_disabled")
+	sorting_method = sort_by_date
+	sorting_method_reversed = reversed
 
+func group_by_engine():
+	all_games = GameOrganizer.categorize_by_engine(default_game_order)
+	sorting_method.call(sorting_method_reversed)
+	display_games()
+	get_tree().call_group("GroupButtons", "turn_off")
+
+func group_by_default():
+	all_games = GameOrganizer.categorize_by_default(default_game_order)
+	sorting_method.call(sorting_method_reversed)
+	display_games()
+	get_tree().call_group("GroupButtons", "turn_off")
+	
 func recursive_size_game(dirPath):
 	var size_in_bytes = 0
 	var dir = DirAccess.open(dirPath)
