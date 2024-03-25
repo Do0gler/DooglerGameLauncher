@@ -23,6 +23,7 @@ WASD to move
 ARROW KEYS to shoot
 Q to pause or go back
 E to interact"
+engine = "Scratch"
 creation_date = "02/03/2022"
 icon = ExtResource("2_lxn37")
 background = ExtResource("1_k3tcl")
