@@ -19,3 +19,4 @@ creation_date = "08/31/2020"
 icon = ExtResource("2_l7cbm")
 background = ExtResource("1_mofe7")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Remake", "Arcade"])

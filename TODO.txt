@@ -1,4 +1,2 @@
 Fix random crashing when resizing the screenshots vsplit (This is a Godot bug)
-Add more sorting options
-Add more categorization options
 (?) Search Bar

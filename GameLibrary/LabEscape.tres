@@ -14,7 +14,9 @@ game_file_name = "Lab-Escape.html"
 description = "Unfinished platformer
 ===================
 Arrow Keys to move"
+engine = "Scratch"
 creation_date = "12/06/2021"
 icon = ExtResource("1_kexsg")
 background = ExtResource("1_t26vi")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Platformer", "Speedrunning"])

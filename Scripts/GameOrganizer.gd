@@ -12,6 +12,18 @@ func sort_by_date(game_list : Array):
 func compare_names(name1 : String, name2 : String):
 	return name1.to_lower() < name2.to_lower()
 
+func compare_file_size(size1 : float, size2: float):
+	return size1 <= size2
+
+func sort_by_size(game_list : Array):
+	for i in range(game_list.size() - 1, -1, -1):
+		for j in range(1, i + 1, 1):
+			if !compare_file_size(game_list[j - 1].file_size_mb, game_list[j].file_size_mb):
+				var temp = game_list[j-1]
+				game_list[j-1] = game_list[j]
+				game_list[j] = temp
+	return game_list
+
 func compare_dates(date1 : String, date2: String): # Check if date one is less than date two
 	var date1_array = date1.split("/", false)
 	var date2_array = date2.split("/", false)
@@ -49,6 +61,7 @@ func sort_by_name(game_list : Array):
 
 func get_default_order():
 	var all_games : Array
+	var game_library = DirAccess.open("user://DooglerGamesLibrary")
 	var dir = DirAccess.open("res://GameLibrary")
 	if dir:
 		dir.list_dir_begin()
@@ -56,7 +69,18 @@ func get_default_order():
 		while file_name != "":
 			if !dir.current_is_dir():
 				var file = load("res://GameLibrary/" + file_name.replace(".remap",""))
-				all_games.append(file)
+				var game_copy = file
+				if game_library:
+					var game_folder_name = file.file_name.get_basename()
+					var game_folder = DirAccess.open("user://DooglerGamesLibrary/" + game_folder_name)
+					if game_folder:
+						var cache_name = file.file_name.get_basename() + "Cache.tres"
+						if game_folder.file_exists(cache_name):
+							game_copy = file.duplicate()
+							var cache = ResourceLoader.load("user://DooglerGamesLibrary/" + game_folder_name \
+							+ "/" + cache_name)
+							game_copy.file_size_mb = cache.game_size_mb
+				all_games.append(game_copy)
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.") 

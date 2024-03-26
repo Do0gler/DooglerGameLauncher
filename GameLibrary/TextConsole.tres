@@ -25,7 +25,9 @@ If you press up arrow while not typing it inputs your last command
 (+1 Secret Command)
 -----------------------------------------------
 If you input an unidentified key it will output as an underscore"
+engine = "Scratch"
 creation_date = "01/05/2021"
 icon = ExtResource("2_ce252")
 background = ExtResource("1_y1r4t")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Experiment", "Sandbox"])

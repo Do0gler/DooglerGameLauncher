@@ -3,6 +3,7 @@ extends Control
 @export var game_panel : PackedScene
 @export var screenshot_panel : PackedScene
 @export var expandable_list : PackedScene
+@export var tag_scene : PackedScene
 var library_folder_name : String = "DooglerGamesLibrary"
 var selected_game : Game_Data
 var current_game_pid = 0
@@ -25,6 +26,7 @@ var sorting_method_reversed := false
 @export var progress_bar : Node
 @export var uninstall_button : Node
 @export var screenshot_container : Node
+@export var tag_container : Node
 
 func _ready():
 	default_game_order = GameOrganizer.get_default_order()
@@ -173,7 +175,6 @@ func display_selected_game():
 			var cache_name = selected_game.file_name.get_basename() + "Cache.tres"
 			var cache_path = game_folder_path + "/" + cache_name
 			if dir.file_exists(cache_name):
-				FileAccess.open(cache_path, FileAccess.READ)
 				var res := ResourceLoader.load(cache_path)
 				game_size = str(res.game_size_mb)
 			else:
@@ -192,6 +193,13 @@ func display_selected_game():
 		uninstall_button.hide()
 	var format = "File Size: %s MB\nDate Created: %s\n%s"
 	display_description.text = format % [game_size, selected_game.creation_date, selected_game.description]
+	# Remove old tags and add new ones
+	for child in tag_container.get_children():
+		child.queue_free()
+	for tag in selected_game.tags:
+		var new_tag = tag_scene.instantiate()
+		tag_container.add_child(new_tag)
+		new_tag.update_display(tag)
 
 func _on_screenshot_popup_open(screenshot_index):
 	var screenshot_tex = $ScreenshotPopup/VBoxContainer/TextureRect
@@ -251,6 +259,17 @@ func sort_default(reversed := true):
 func sort_by_date(reversed := true):
 	for category in all_games:
 		var sorted_game_list = GameOrganizer.sort_by_date(all_games[category])
+		if reversed:
+			sorted_game_list.reverse()
+		all_games[category] = sorted_game_list
+	display_games()
+	get_tree().call_group("SortButtons","set_sort_disabled")
+	sorting_method = sort_by_date
+	sorting_method_reversed = reversed
+
+func sort_by_size(reversed := true):
+	for category in all_games:
+		var sorted_game_list = GameOrganizer.sort_by_size(all_games[category])
 		if reversed:
 			sorted_game_list.reverse()
 		all_games[category] = sorted_game_list

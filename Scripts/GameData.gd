@@ -13,3 +13,4 @@ class_name Game_Data
 @export var icon : Texture2D
 @export var background : Texture2D
 @export var screenshots : Array[Texture2D]
+@export var tags : Array[String]

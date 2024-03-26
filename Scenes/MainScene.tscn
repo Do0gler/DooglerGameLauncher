@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://oec37qhorbfc"]
+[gd_scene load_steps=51 format=3 uid="uid://oec37qhorbfc"]
 
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_ueker"]
 [ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://Scenes/GamePanel.tscn" id="2_mdwpe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="4_dhwsy"]
 [ext_resource type="PackedScene" uid="uid://bq4ol1xr5qgh0" path="res://Scenes/ExpandableList.tscn" id="4_duvmm"]
 [ext_resource type="Texture2D" uid="uid://cmxfuhdyb7wvj" path="res://GameArt/OAF/oafbanner.png" id="5_2ycfk"]
+[ext_resource type="PackedScene" uid="uid://3da8np5hp0v3" path="res://Scenes/TagPanel.tscn" id="5_gye0b"]
 [ext_resource type="Texture2D" uid="uid://8e1tc1it83oc" path="res://UIArt/XIcon.png" id="6_lb3r5"]
 [ext_resource type="Texture2D" uid="uid://bb7qyspm4evkm" path="res://GameArt/4WizRemake/4WizScreenshot1.png" id="6_nmrpw"]
 [ext_resource type="Texture2D" uid="uid://dbf0r0et3ci4d" path="res://UIArt/XIconSelected.png" id="7_p7dyr"]
@@ -226,7 +227,7 @@ bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uypm"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 1)
 
-[node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "screenshot_container")]
+[node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "screenshot_container", "tag_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -237,8 +238,9 @@ script = ExtResource("1_ueker")
 game_panel = ExtResource("2_mdwpe")
 screenshot_panel = ExtResource("3_6basi")
 expandable_list = ExtResource("4_duvmm")
+tag_scene = ExtResource("5_gye0b")
 games_list = NodePath("HSplitContainer/GameListPanel/ScrollContainer/VBoxContainer")
-display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/Description")
+display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/VBoxContainer/Description")
 display_icon = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/TextureRect")
 display_bg = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/Background")
 display_name = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/Label")
@@ -247,6 +249,7 @@ stop_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContai
 progress_bar = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/StartButton/ProgressBar")
 uninstall_button = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/VBoxContainer/UninstallButton")
 screenshot_container = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/ScreenshotContainer")
+tag_container = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/VBoxContainer/GridContainer")
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 custom_minimum_size = Vector2(0, 608)
@@ -415,13 +418,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
 
-[node name="Description" type="Label" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Description" type="Label" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Date made: 00/00/0000
 Description Text:  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 autowrap_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/VBoxContainer"]
+layout_mode = 2
+columns = 4
 
 [node name="ScreenshotContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -608,6 +620,22 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
 toggle_mode = true
 text = "Date"
+icon = ExtResource("18_e8lnr")
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("19_fdxr5")
+
+[node name="SizeSortButton2" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer" groups=["SortButtons"]]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+toggle_mode = true
+text = "Size"
 icon = ExtResource("18_e8lnr")
 icon_alignment = 2
 expand_icon = true
@@ -809,6 +837,8 @@ diagonal_corner = 2
 [connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" method="toggle_sort_order" flags=18]
 [connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="." method="sort_by_date"]
 [connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" method="toggle_sort_order" flags=18]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" to="." method="sort_by_size"]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" method="toggle_sort_order" flags=18]
 [connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_focus_exited" flags=18]
 [connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_gui_input" flags=18]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" to="." method="group_by_default"]

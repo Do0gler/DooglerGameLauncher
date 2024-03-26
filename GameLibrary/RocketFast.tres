@@ -33,3 +33,4 @@ creation_date = "02/09/2023"
 icon = ExtResource("2_1woir")
 background = ExtResource("1_upc7q")
 screenshots = Array[Texture2D]([ExtResource("1_408px"), ExtResource("2_0ei3b"), ExtResource("3_82qgh")])
+tags = Array[String](["Arcade", "Delivery"])

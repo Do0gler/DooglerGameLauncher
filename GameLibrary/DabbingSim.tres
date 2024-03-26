@@ -16,7 +16,9 @@ description = "press Space to dab
 each time you dab you gain a point, use the points to buy cosmetics and backgrounds for your David
 -sometimes packages appear click them to gain 100 pts. 
 ------------------------------------------------------------------------"
+engine = "Scratch"
 creation_date = "02/13/2020"
 icon = ExtResource("2_kuvd7")
 background = ExtResource("1_00kjb")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Idle", "Clicker"])

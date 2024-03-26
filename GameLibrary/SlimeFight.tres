@@ -17,7 +17,9 @@ Spacebar to Jump
 Click to attack (The attack aim to where you are pointing)
 ========================================
 P.S -  The slime makes the ground unsafe when he lands from his high jump attack "
+engine = "Scratch"
 creation_date = "01/20/2021"
 icon = ExtResource("2_d2cme")
 background = ExtResource("1_fv6dk")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Boss Fight"])

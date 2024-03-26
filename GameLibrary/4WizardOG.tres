@@ -22,3 +22,4 @@ creation_date = "04/02/2021"
 icon = ExtResource("2_tun8a")
 background = ExtResource("1_2ursq")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Top-Down", "Pixel Art"])

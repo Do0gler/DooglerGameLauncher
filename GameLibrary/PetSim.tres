@@ -17,3 +17,4 @@ creation_date = "02/16/2023"
 icon = ExtResource("2_ppows")
 background = ExtResource("1_vlmjn")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Unfinished", "Pet Simulator", "Clicker", "Pixel Art"])

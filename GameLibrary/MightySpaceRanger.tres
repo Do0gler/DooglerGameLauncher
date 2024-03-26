@@ -21,7 +21,9 @@ U.F.O Escapes: -200 Score
 Take Damage: -50 Score
 =========================================
 There is no end, just get the highest score possible."
+engine = "Scratch"
 creation_date = "12/08/2020"
 icon = ExtResource("2_533c6")
 background = ExtResource("1_unmyo")
 screenshots = Array[Texture2D]([])
+tags = Array[String](["Side Scroller", "Arcade"])
