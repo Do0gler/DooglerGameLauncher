@@ -18,8 +18,11 @@ func add_item(item : Node):
 	number_of_items += 1
 
 func update_visuals():
+	await get_tree().process_frame # Wait for children to be placed properly
 	text = list_name + " (" + str(number_of_items) + ")"
-	items_control.custom_minimum_size.y = 60 * number_of_items # Temp solution, should be added by the size of the item added
+	var items = items_control.get_child(0).get_children()
+	var last_child = items[items.size() - 1]
+	items_control.custom_minimum_size.y = last_child.position.y + last_child.size.y
 
 func expand_contract(will_expand):
 	var expand_to : int = 0

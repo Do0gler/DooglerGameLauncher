@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=6 format=3 uid="uid://celt7ene7ap3i"]
+
+[ext_resource type="Texture2D" uid="uid://g0a0lvncnjbb" path="res://GameArt/CardGameDE/CardGameDEBG.png" id="1_bmcmx"]
+[ext_resource type="Texture2D" uid="uid://cnqmvqav7yom4" path="res://GameArt/CardGameDE/CardGameDEIcon.png" id="2_5t44f"]
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="3_lxqwq"]
+[ext_resource type="Texture2D" uid="uid://bwxp3ahcfluv2" path="res://GameArt/CardGameDE/CardGameDE2.png" id="3_tullv"]
+[ext_resource type="Texture2D" uid="uid://c20u057x88d0n" path="res://GameArt/CardGameDE/CardGameDE1.png" id="4_q4hqe"]
+
+[resource]
+script = ExtResource("3_lxqwq")
+file_size_mb = 25.46
+download_path = "http://dl.dropboxusercontent.com/scl/fi/5qjh4yidczpj6mnlbx3aj/CardGameDE1.2.zip?rlkey=sm9qysjwqvcusjopvsxmdm646&st=33gzftp3&dl=0"
+game_name = "Card Game: Definitive Edtion"
+file_name = "CardGameDE1.2.zip"
+game_file_name = "CardGameDE.exe"
+description = "The definitive edition of the hit game: Card Game.
+
+Click the numbers from highest to lowest
+
+Earn coins and buy skins for the backgroud and cards"
+engine = "Godot"
+creation_date = "06/04/2024"
+icon = ExtResource("2_5t44f")
+background = ExtResource("1_bmcmx")
+screenshots = Array[Texture2D]([ExtResource("3_tullv"), ExtResource("4_q4hqe")])
+tags = Array[String](["Remake", "Arcade"])

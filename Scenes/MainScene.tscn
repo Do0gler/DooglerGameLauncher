@@ -483,6 +483,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_b8f3j")
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_p7dyr")
 texture_pressed = ExtResource("6_lb3r5")
 texture_hover = ExtResource("7_p7dyr")
@@ -831,16 +832,16 @@ diagonal_corner = 2
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/MinimizeButton" to="Titlebar" method="_on_minimize_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/WindowedToggleButton" to="Titlebar" method="_on_windowed_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/ExitButton" to="Titlebar" method="_on_exit_button_pressed"]
-[connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_focus_exited" flags=18]
-[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_gui_input" flags=18]
+[connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_focus_exited"]
+[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_gui_input"]
 [connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="." method="sort_default"]
-[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" method="toggle_sort_order" flags=18]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" method="toggle_sort_order"]
 [connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="." method="sort_by_date"]
-[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" method="toggle_sort_order" flags=18]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/DateSortButton" method="toggle_sort_order"]
 [connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" to="." method="sort_by_size"]
-[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" method="toggle_sort_order" flags=18]
-[connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_focus_exited" flags=18]
-[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_gui_input" flags=18]
+[connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/SizeSortButton2" method="toggle_sort_order"]
+[connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_focus_exited"]
+[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2" method="_on_gui_input"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" to="." method="group_by_default"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" method="toggle_state"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" to="." method="group_by_engine"]
