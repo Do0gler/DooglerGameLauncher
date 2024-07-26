@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=6 format=3 uid="uid://dmt63emev8n5g"]
+
+[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_0qyhc"]
+[ext_resource type="Texture2D" uid="uid://d2gmyujdu4cpu" path="res://GameArt/CursedCards/Logo.png" id="1_chgi8"]
+[ext_resource type="Texture2D" uid="uid://rgogihkw1mit" path="res://GameArt/CursedCards/BG.png" id="1_ubmj0"]
+[ext_resource type="Texture2D" uid="uid://ckccqtt2ba0rc" path="res://GameArt/CursedCards/Screenshot1.png" id="2_l6e38"]
+[ext_resource type="Texture2D" uid="uid://csi56uiownd12" path="res://GameArt/CursedCards/Screenshot2.png" id="3_3qu8a"]
+
+[resource]
+script = ExtResource("1_0qyhc")
+file_size_mb = 66.55
+download_path = "http://dl.dropboxusercontent.com/scl/fi/9fi8l0389oujiuctabj0g/CursedCardsV1.zip?rlkey=3d7415iznusjn32sp9o0jxe8o&st=i8qjkgzs&dl=0"
+game_name = "Cursed Cards"
+file_name = "CursedCardsV1.zip"
+game_file_name = "CursedCards.exe"
+description = "A card battler from the creator of Card Game
+==How To Play==
+In the main menu before starting, you can create a deck, it must be under 75 power with a minimum of 15 cards and a max of 40
+When the game starts you will automatically draw 4 cards, each round after that you can draw 1 card for free the rest will cost AP
+All cards have a Cost (AP cost to play), Health (amount of damage able to be taken before death), Attack (how much damage the card deals), and optionally an Ability (special card action) which details can be seen by hovering over it
+The goal of the game is to lower your opponents health to 0, which is done by attacking empty spaces on their sides of the board
+For the first round of each players turn their cards will not attack, after that cards will automatically attack after each turn
+
+"
+engine = "Godot"
+creation_date = "07/25/2024"
+icon = ExtResource("1_chgi8")
+background = ExtResource("1_ubmj0")
+screenshots = Array[Texture2D]([ExtResource("2_l6e38"), ExtResource("3_3qu8a")])
+tags = Array[String](["Multiplayer", "Pixel Art", "1-Bit", "Card Battler"])
