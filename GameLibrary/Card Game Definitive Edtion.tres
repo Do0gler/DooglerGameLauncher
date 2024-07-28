@@ -13,6 +13,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/5qjh4yidczpj6mnlbx3aj/C
 game_name = "Card Game: Definitive Edtion"
 file_name = "CardGameDE1.2.zip"
 game_file_name = "CardGameDE.exe"
+has_rpc = false
+api_icon_name = "cardgamede"
 description = "The definitive edition of the hit game: Card Game.
 
 Click the numbers from highest to lowest

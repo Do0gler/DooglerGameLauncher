@@ -11,6 +11,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/7lyrq7fvatcw0w5vgnbh4/4
 game_name = "4Wizard Classic"
 file_name = "4WizardOG.html"
 game_file_name = "4WizardOG.html"
+has_rpc = false
+api_icon_name = "4wizog"
 description = "The original version of 4Wizard
 ======================================
 W A S D to Move

@@ -5,10 +5,10 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_380xv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cd60l"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlnew"]
 bg_color = Color(1, 1, 1, 0.439216)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cd60l"]
 
 [node name="GamePanel" type="PanelContainer"]
 clip_contents = true
@@ -46,7 +46,7 @@ text_overrun_behavior = 3
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_cd60l")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wlnew")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cd60l")
 
 [connection signal="pressed" from="Button" to="." method="set_current_game"]

@@ -11,6 +11,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/sj1b6hh89vvbrur7tx7zq/D
 game_name = "Drive! Zombie"
 file_name = "Drive-Zombie.html"
 game_file_name = "Drive-Zombie.html"
+has_rpc = false
+api_icon_name = "drivezombie"
 description = "Move your mouse to go (the car will follow your mouse)
 -------------------------------------------------------------------------
 Drive away from the zombie he will kill you

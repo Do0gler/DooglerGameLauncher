@@ -14,6 +14,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/tf8mbkhgixscghbhob6il/R
 game_name = "Rocket Fast"
 file_name = "RocketFast.zip"
 game_file_name = "RocketFast.exe"
+has_rpc = false
+api_icon_name = "rocketfast"
 description = "Controls
 
 Use LEFT and RIGHT to turn the rocket

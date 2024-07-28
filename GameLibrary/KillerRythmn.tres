@@ -14,6 +14,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/0smp4wcjrgtuufrxhtsk2/K
 game_name = "Killer Rythmn!"
 file_name = "Killer-Rythmn.html"
 game_file_name = "Killer-Rythmn.html"
+has_rpc = false
+api_icon_name = "killerrythmn"
 description = "=====CONTROLS=====
 WASD or Arrow Keys (or both if ur cool)
 Space to Confirm/Press

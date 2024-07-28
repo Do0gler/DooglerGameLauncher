@@ -11,6 +11,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/hl23m1tzv0f1q5cp4hp2i/M
 game_name = "Mighty Space Ranger"
 file_name = "Mighty Space Ranger.html"
 game_file_name = "Mighty Space Ranger.html"
+has_rpc = false
+api_icon_name = "mightyspaceranger"
 description = "-Controls-
 Press Spacebar To Shoot
 Arrow Keys to Move

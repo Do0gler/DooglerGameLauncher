@@ -11,6 +11,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/1n1o94510hgk4obakcxb4/R
 game_name = "Robo Rap Battle"
 file_name = "RoboRapBattle.html"
 game_file_name = "RoboRapBattle.html"
+has_rpc = false
+api_icon_name = "roborapbattle"
 description = "--Controls--
 WASD or Arrow Keys (or both)
 Space to Confirm/Press"

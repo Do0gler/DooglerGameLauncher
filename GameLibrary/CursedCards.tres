@@ -13,6 +13,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/9fi8l0389oujiuctabj0g/C
 game_name = "Cursed Cards"
 file_name = "CursedCardsV1.zip"
 game_file_name = "CursedCards.exe"
+has_rpc = false
+api_icon_name = "cursedcards"
 description = "A card battler from the creator of Card Game
 ==How To Play==
 In the main menu before starting, you can create a deck, it must be under 75 power with a minimum of 15 cards and a max of 40

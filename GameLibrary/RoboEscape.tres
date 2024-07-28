@@ -15,6 +15,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/oufxyttmk9dz8vmfxxwjm/R
 game_name = "Robo-Escape"
 file_name = "RoboEscape.zip"
 game_file_name = "FallSpyRemake.exe"
+has_rpc = false
+api_icon_name = "roboescapeicon"
 description = "A remake of Fall Spy
 =Controls=
 A & D to move

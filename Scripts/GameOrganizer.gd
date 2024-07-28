@@ -60,7 +60,7 @@ func sort_by_name(game_list : Array):
 	return game_list
 
 func get_default_order():
-	var all_games : Array
+	var all_games : Array = []
 	var game_library = DirAccess.open("user://DooglerGamesLibrary")
 	var dir = DirAccess.open("res://GameLibrary")
 	if dir:

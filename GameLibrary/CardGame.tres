@@ -11,6 +11,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/cnfsq4j00rlo0jptn0iqy/C
 game_name = "Card Game"
 file_name = "Card-Game.zip"
 game_file_name = "Card Game.exe"
+has_rpc = false
+api_icon_name = "cardgame"
 description = "A unity remake of Card Game (scratch)
 Click the cards in order of highest to lowest
 Get the highscore!"

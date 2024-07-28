@@ -11,6 +11,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/xkbf8qu0s4yps92pyz3pd/L
 game_name = "Lab Escape"
 file_name = "Lab-Escape.html"
 game_file_name = "Lab-Escape.html"
+has_rpc = false
+api_icon_name = "labescape"
 description = "Unfinished platformer
 ===================
 Arrow Keys to move"

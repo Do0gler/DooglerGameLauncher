@@ -1,3 +1,4 @@
 Fix random crashing when resizing the screenshots vsplit (This is a Godot bug)
+(?) Settings menu, for disabling discord RPC
 (?) Search Bar
 (?) Game update system

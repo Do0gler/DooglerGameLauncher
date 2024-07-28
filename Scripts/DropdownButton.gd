@@ -7,8 +7,8 @@ extends Button
 func _ready():
 	set_sort_disabled()
 
-func toggle_sort_order(toggled : bool):
-	if toggled:
+func toggle_sort_order(_toggled : bool):
+	if _toggled:
 		icon = order_reversed_icon
 	else:
 		icon = order_regular_icon

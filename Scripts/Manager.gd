@@ -43,6 +43,7 @@ func _process(_delta):
 			game_launched = false
 			can_switch_games = true
 			stop_button.hide()
+			DiscordRpcManager.enter_library()
 	if downloading:
 		var body_size = selected_game.file_size_mb * 1000000
 		var downloaded_bytes = http.get_downloaded_bytes()
@@ -126,12 +127,14 @@ func launch_selected_game():
 		var current_game_path = "user://" + library_folder_name +\
 		 "/" + selected_game.file_name.get_basename() + "/"+ selected_game.game_file_name
 		var global_path = ProjectSettings.globalize_path(current_game_path)
-		if(selected_game.file_name.get_extension() == "exe"):
+		if(selected_game.game_file_name.get_extension() == "exe"):
 			if current_game_pid == 0:
 				current_game_pid = OS.create_process(global_path,[])
 				if current_game_pid == -1:
 					print("could not start game")
+					DiscordRpcManager.enter_library()
 				else:
+					DiscordRpcManager.started_playing_game(selected_game)
 					stop_button.show()
 					game_launched = true
 					can_switch_games = false
@@ -139,7 +142,9 @@ func launch_selected_game():
 			else:
 				OS.kill(current_game_pid)
 				current_game_pid = 0
+				DiscordRpcManager.enter_library()
 		else:
+			current_game_pid = 0
 			var error = OS.execute("CMD.exe",["/C", '"' + global_path + '"'])
 			if error == -1:
 				print("could not start game")

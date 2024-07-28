@@ -11,6 +11,8 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/aumag6e1qwj510219jlkx/T
 game_name = "Text Console"
 file_name = "Text-Console.html"
 game_file_name = "Text-Console.html"
+has_rpc = false
+api_icon_name = "textconsole"
 description = "-Type whatever in the console-
 If you press up arrow while not typing it inputs your last command
 -list of commands-
