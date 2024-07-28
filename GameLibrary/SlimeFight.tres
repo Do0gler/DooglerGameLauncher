@@ -11,6 +11,7 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/tayfvfpbk7ztw5amlgk5b/S
 game_name = "Slime Fight!"
 file_name = "Slime-Fight.html"
 game_file_name = "Slime-Fight.html"
+api_icon_name = "slimefight"
 description = "=Controls=
 A and D to move
 Spacebar to Jump 

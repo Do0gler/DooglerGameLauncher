@@ -11,6 +11,7 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/duqmhrv0pd5c3j27672m1/F
 game_name = "Fall Spy"
 file_name = "Fall-Spy.zip"
 game_file_name = "Fall Spy.exe"
+api_icon_name = "fallspy"
 description = "You are a secret agent who has fallen into a complex cave, use your trusty gun to parkour your way out!"
 engine = "Unity"
 creation_date = "05/24/2021"

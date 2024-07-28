@@ -14,6 +14,7 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/ehguk0jssveosxkzp0ag8/4
 game_name = "4Wizard Remake"
 file_name = "4Wizard-2.1.2.html"
 game_file_name = "4Wizard-2.1.2.html"
+api_icon_name = "4wizremake"
 description = "An Arcade 4-Directional Shooter 
 
 Made in scratch because.

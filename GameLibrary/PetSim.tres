@@ -11,6 +11,7 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/bzqt7n9h82vavnv82xne0/P
 game_name = "Pet Simulator"
 file_name = "PetSim.zip"
 game_file_name = "PetSim.exe"
+api_icon_name = "petgame"
 description = "unfinished pet simulator"
 engine = "Unity"
 creation_date = "02/16/2023"

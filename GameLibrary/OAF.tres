@@ -14,6 +14,7 @@ download_path = "http://dl.dropboxusercontent.com/scl/fi/eohggymlkqciwmhskbmpq/O
 game_name = "O.A.F"
 file_name = "OAF.exe"
 game_file_name = "OAF.exe"
+api_icon_name = "oaf"
 description = "WASD To Move/control UI
 
 Space or Shift to move slowly

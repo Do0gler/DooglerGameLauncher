@@ -7,4 +7,4 @@ func update_display():
 	$MarginContainer/HBoxContainer/Label.text = game_data.game_name
 
 func set_current_game():
-	get_tree().root.get_child(1).set_current_game(game_data)
+	get_tree().root.get_node("Manager").set_current_game(game_data)
