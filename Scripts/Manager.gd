@@ -1,4 +1,5 @@
 extends Control
+class_name Manager
 
 @export var game_panel : PackedScene
 @export var screenshot_panel : PackedScene
@@ -25,17 +26,21 @@ var sorting_method_reversed := false
 @export var stop_button : Node
 @export var progress_bar : Node
 @export var uninstall_button : Node
+@export var update_button : Node
 @export var screenshot_container : Node
 @export var tag_container : Node
 
 func _ready():
+	$FirstLoadingScreen.show()
 	default_game_order = GameOrganizer.get_default_order()
+	await Updater.check_for_updates()
 	all_games = GameOrganizer.categorize_by_default(default_game_order)
 	var dir = DirAccess.open("user://")
 	if(!dir.dir_exists(library_folder_name)):
 		dir.make_dir(library_folder_name)
 		print("Created Library folder")
 	display_games()
+	$FirstLoadingScreen.hide()
 
 func _process(_delta):
 	if game_launched:
@@ -51,6 +56,7 @@ func _process(_delta):
 		progress_bar.value = percent
 
 func display_games():
+	await get_tree().process_frame
 	var games_in_list = games_list.get_children()
 	if games_in_list.size() > 0:
 		for game in games_in_list:
@@ -110,6 +116,12 @@ func install_selected_game():
 		install_button.hide()
 		uninstall_button.show()
 		new_game_file.close()
+		var new_ver_ref_file = FileAccess.open("user://game_versions.txt", FileAccess.READ)
+		var downloaded_ver := ""
+		if new_ver_ref_file != null:
+			var ver_dict : Dictionary = JSON.parse_string(new_ver_ref_file.get_as_text())
+			downloaded_ver = ver_dict[selected_game.game_name]
+		get_game_cache(selected_game, downloaded_ver)
 		display_selected_game()
 
 func show_uninstall_confirm():
@@ -121,6 +133,7 @@ func uninstall_current_game():
 		 "/" + selected_game.file_name.get_basename()
 	recursive_delete_game(current_game_path)
 	display_selected_game()
+	return
 
 func launch_selected_game():
 	if selected_game != null:
@@ -152,6 +165,34 @@ func launch_selected_game():
 				game_launched = true
 				launched_game_is_exe = false
 
+func get_game_cache(game : Game_Data, ver := "") -> GameCache:
+	# Load game cached data if exists else calculate size and create cache
+	var game_folder_path = "user://" + library_folder_name +\
+	 "/" + game.file_name.get_basename()
+	var dir = DirAccess.open(game_folder_path)
+	var cache_name = game.file_name.get_basename() + "Cache.tres"
+	var cache_path = game_folder_path + "/" + cache_name
+	if dir.file_exists(cache_name):
+		var res := ResourceLoader.load(cache_path)
+		return res
+	else:
+		var size_mb := snappedf(recursive_size_game(game_folder_path) / 1000000.0, 0.01)
+		var cache := GameCache.new()
+		cache.game_size_mb = size_mb
+		cache.game_version = ver
+		cache.resource_name = cache_name
+		ResourceSaver.save(cache, cache_path)
+		return cache
+
+func check_for_updates():
+	await Updater.check_for_updates()
+	display_selected_game()
+
+func update_selected_game():
+	await uninstall_current_game()
+	selected_game.is_outdated = false
+	install_selected_game()
+
 func display_selected_game():
 	# Destroy previous screenshots
 	for screenshot in screenshot_container.get_child(0).get_children():
@@ -174,30 +215,28 @@ func display_selected_game():
 	 "/" + selected_game.file_name.get_basename()
 	var dir = DirAccess.open(game_folder_path)
 	var game_size : String
+	var game_ver : String
 	if dir:
 		if dir.file_exists(selected_game.game_file_name):
-			# Load game cached data if exists else calculate size and create cache
-			var cache_name = selected_game.file_name.get_basename() + "Cache.tres"
-			var cache_path = game_folder_path + "/" + cache_name
-			if dir.file_exists(cache_name):
-				var res := ResourceLoader.load(cache_path)
-				game_size = str(res.game_size_mb)
-			else:
-				var size_mb := snappedf(recursive_size_game(game_folder_path) / 1000000.0, 0.01)
-				game_size = str(size_mb)
-				var cache := GameCache.new()
-				cache.game_size_mb = size_mb
-				cache.resource_name = cache_name
-				ResourceSaver.save(cache, cache_path)
+			var cache = get_game_cache(selected_game)
+			game_size = str(cache.game_size_mb)
+			game_ver = cache.game_version
 			#Show buttons
+			if selected_game.is_outdated:
+				uninstall_button.hide()
+				update_button.show()
+			else:
+				uninstall_button.show()
+				update_button.hide()
 			install_button.hide()
-			uninstall_button.show()
 	else:
 		game_size = str(selected_game.file_size_mb)
+		game_ver = "N/A"
 		install_button.show()
+		update_button.hide()
 		uninstall_button.hide()
-	var format = "File Size: %s MB\nDate Created: %s\n%s"
-	display_description.text = format % [game_size, selected_game.creation_date, selected_game.description]
+	var format = "File Size: %s MB\nDate Created: %s\nVersion: %s\n%s"
+	display_description.text = format % [game_size, selected_game.creation_date, game_ver, selected_game.description]
 	# Remove old tags and add new ones
 	for child in tag_container.get_children():
 		child.queue_free()

@@ -12,6 +12,7 @@ game_name = "Card Game"
 file_name = "Card-Game.zip"
 game_file_name = "Card Game.exe"
 api_icon_name = "cardgame"
+version_number = "1.0"
 description = "A unity remake of Card Game (scratch)
 Click the cards in order of highest to lowest
 Get the highscore!"

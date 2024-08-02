@@ -3,7 +3,7 @@ extends Node
 func sort_by_date(game_list : Array):
 	for i in range(game_list.size() - 1, -1, -1):
 		for j in range(1, i + 1, 1):
-			if !compare_dates(game_list[j - 1].creation_date, game_list[j].creation_date):
+			if compare_dates(game_list[j - 1].creation_date, game_list[j].creation_date):
 				var temp = game_list[j-1]
 				game_list[j-1] = game_list[j]
 				game_list[j] = temp
@@ -18,7 +18,7 @@ func compare_file_size(size1 : float, size2: float):
 func sort_by_size(game_list : Array):
 	for i in range(game_list.size() - 1, -1, -1):
 		for j in range(1, i + 1, 1):
-			if !compare_file_size(game_list[j - 1].file_size_mb, game_list[j].file_size_mb):
+			if compare_file_size(game_list[j - 1].file_size_mb, game_list[j].file_size_mb):
 				var temp = game_list[j-1]
 				game_list[j-1] = game_list[j]
 				game_list[j] = temp
@@ -80,6 +80,7 @@ func get_default_order():
 							var cache = ResourceLoader.load("user://DooglerGamesLibrary/" + game_folder_name \
 							+ "/" + cache_name)
 							game_copy.file_size_mb = cache.game_size_mb
+							game_copy.version_number = cache.game_version
 				all_games.append(game_copy)
 			file_name = dir.get_next()
 	else:

@@ -15,6 +15,7 @@ game_name = "4Wizard Remake"
 file_name = "4Wizard-2.1.2.html"
 game_file_name = "4Wizard-2.1.2.html"
 api_icon_name = "4wizremake"
+version_number = "1.0"
 description = "An Arcade 4-Directional Shooter 
 
 Made in scratch because.

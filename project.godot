@@ -15,6 +15,7 @@ run/main_scene="res://Scenes/MainScene.tscn"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/low_processor_mode=true
+boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/image="res://UIArt/DooglerLauncherSplash.png"
 config/icon="res://DooglerLauncherIcon.png"
 
@@ -23,6 +24,7 @@ config/icon="res://DooglerLauncherIcon.png"
 GameOrganizer="*res://Scripts/GameOrganizer.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 DiscordRpcManager="*res://Scripts/DiscordRPCManager.gd"
+Updater="*res://Scripts/Updater.gd"
 
 [display]
 
