@@ -1,7 +1,5 @@
 Bugs:
 	Random crashing when resizing the screenshots vsplit (This is a Godot bug)
-	Card Game: DE is bugged when launching through the launcher, fine otherwise 
+	Card Game: DE is bugged when launching through the launcher, fine otherwise
 Possible Updates:
 	(?) Settings menu, for disabling discord RPC
-	(?) Search Bar
-		An option to only show certain games (functionality would be needed anyway)

@@ -17,6 +17,7 @@ var downloading = false
 var http : HTTPRequest
 var sorting_method : Callable = sort_default
 var sorting_method_reversed := false
+var relevant_games := []
 @export var games_list : Node
 @export var display_description : Node
 @export var display_icon : Node
@@ -29,12 +30,14 @@ var sorting_method_reversed := false
 @export var update_button : Node
 @export var screenshot_container : Node
 @export var tag_container : Node
+@onready var search_bar = $Titlebar/MarginContainer/HBoxContainer2/SearchBar
 
 func _ready():
 	$FirstLoadingScreen.show()
 	default_game_order = GameOrganizer.get_default_order()
 	await Updater.check_for_updates()
 	all_games = GameOrganizer.categorize_by_default(default_game_order)
+	search_games("")
 	var dir = DirAccess.open("user://")
 	if(!dir.dir_exists(library_folder_name)):
 		dir.make_dir(library_folder_name)
@@ -42,12 +45,38 @@ func _ready():
 	display_games()
 	$FirstLoadingScreen.hide()
 
+func search_games(prompt : String):
+	var no_spaces_prompt = prompt.replace(" ","")
+	if no_spaces_prompt != "":
+		relevant_games.clear()
+		for game in default_game_order:
+			game = game as Game_Data
+			var game_name = game.game_name.to_lower()
+			var punc = [",",".","-",":","!"]
+			for char in punc:
+				game_name = game_name.replace(char, "")
+			if game_name.contains(prompt.to_lower()) or game.game_name.to_lower().contains(prompt.to_lower()):
+				relevant_games.append(game.game_name)
+				print(game_name, " Contains ", prompt.to_lower())
+	else:
+		for game in default_game_order:
+			relevant_games.append(game.game_name)
+	search_bar.release_focus()
+	display_games()
+
+func _on_search_bar_text_changed(new_text : String):
+	if new_text == "":
+		search_games(new_text)
+		search_bar.release_focus()
+
 func _process(_delta):
 	if game_launched:
 		if !OS.is_process_running(current_game_pid):
 			game_launched = false
 			can_switch_games = true
 			stop_button.hide()
+			DiscordRpcManager.resume_rpc()
+			print("game ended")
 			DiscordRpcManager.enter_library()
 	if downloading:
 		var body_size = selected_game.file_size_mb * 1000000
@@ -68,14 +97,15 @@ func display_games():
 		new_list_script.list_name = key
 		games_list.add_child(new_list)
 		for game in all_games[key]:
-			var new_game_panel = game_panel.instantiate()
-			new_list_script.add_item(new_game_panel)
-			new_game_panel.game_data = game
-			if i == 0:
-				selected_game = game
-				display_selected_game()
-			i += 1
-			new_game_panel.update_display()
+			if relevant_games.has(game.game_name):
+				var new_game_panel = game_panel.instantiate()
+				new_list_script.add_item(new_game_panel)
+				new_game_panel.game_data = game
+				if i == 0:
+					selected_game = game
+					display_selected_game()
+				i += 1
+				new_game_panel.update_display()
 		new_list_script.update_visuals()
 
 func set_current_game(game_data : Game_Data):
@@ -137,6 +167,8 @@ func uninstall_current_game():
 
 func launch_selected_game():
 	if selected_game != null:
+		if selected_game.has_discord_rpc:
+			DiscordRpcManager.suspend_rpc()
 		var current_game_path = "user://" + library_folder_name +\
 		 "/" + selected_game.file_name.get_basename() + "/"+ selected_game.game_file_name
 		var global_path = ProjectSettings.globalize_path(current_game_path)

@@ -21,8 +21,9 @@ func update_visuals():
 	await get_tree().process_frame # Wait for children to be placed properly
 	text = list_name + " (" + str(number_of_items) + ")"
 	var items = items_control.get_child(0).get_children()
-	var last_child = items[items.size() - 1]
-	items_control.custom_minimum_size.y = last_child.position.y + last_child.size.y
+	if items.size() > 0:
+		var last_child = items[items.size() - 1]
+		items_control.custom_minimum_size.y = last_child.position.y + last_child.size.y
 
 func expand_contract(will_expand):
 	var expand_to : int = 0

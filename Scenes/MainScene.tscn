@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://oec37qhorbfc"]
+[gd_scene load_steps=57 format=3 uid="uid://oec37qhorbfc"]
 
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_ueker"]
 [ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://Scenes/GamePanel.tscn" id="2_mdwpe"]
@@ -228,6 +228,8 @@ bg_color = Color(0.180392, 0.180392, 0.180392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uypm"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8go6"]
 
 [sub_resource type="Animation" id="Animation_42d66"]
 resource_name = "Loading"
@@ -650,10 +652,10 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
 toggle_mode = true
 text = "Alphabetical"
 icon = ExtResource("18_e8lnr")
@@ -666,10 +668,10 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
 toggle_mode = true
 text = "Date"
 icon = ExtResource("18_e8lnr")
@@ -682,10 +684,10 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
 toggle_mode = true
 text = "Size"
 icon = ExtResource("18_e8lnr")
@@ -753,7 +755,18 @@ off_icon = ExtResource("18_e8lnr")
 [node name="CheckUpdateButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(108.44, 0)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8go6")
 text = "Check For Updates"
+
+[node name="SearchBar" type="LineEdit" parent="Titlebar/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search"
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+clear_button_enabled = true
+select_all_on_focus = true
 
 [node name="Resizer" type="Control" parent="."]
 layout_mode = 1
@@ -976,6 +989,8 @@ stretch_mode = 5
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" to="." method="group_by_engine"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" method="toggle_state"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/CheckUpdateButton" to="." method="check_for_updates"]
+[connection signal="text_changed" from="Titlebar/MarginContainer/HBoxContainer2/SearchBar" to="." method="_on_search_bar_text_changed"]
+[connection signal="text_submitted" from="Titlebar/MarginContainer/HBoxContainer2/SearchBar" to="." method="search_games"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalBottom" to="Resizer/ResizeVerticalBottom" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalTop" to="Resizer/ResizeVerticalTop" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeHorizontalRight" to="Resizer/ResizeHorizontalRight" method="_on_gui_input"]
