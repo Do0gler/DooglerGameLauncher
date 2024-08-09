@@ -12,6 +12,8 @@ game_name = "Robo Rap Battle"
 file_name = "RoboRapBattle.html"
 game_file_name = "RoboRapBattle.html"
 api_icon_name = "roborapbattle"
+version_number = "1.0"
+has_discord_rpc = false
 description = "--Controls--
 WASD or Arrow Keys (or both)
 Space to Confirm/Press"

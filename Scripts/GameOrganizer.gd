@@ -1,5 +1,7 @@
 extends Node
 
+var all_games : Array
+
 func sort_by_date(game_list : Array):
 	for i in range(game_list.size() - 1, -1, -1):
 		for j in range(1, i + 1, 1):

@@ -15,6 +15,7 @@ file_name = "CardGameDE1.2.zip"
 game_file_name = "CardGameDE.exe"
 api_icon_name = "cardgamede"
 version_number = "1.0"
+has_discord_rpc = true
 description = "The definitive edition of the hit game: Card Game.
 
 Click the numbers from highest to lowest

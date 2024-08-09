@@ -12,6 +12,8 @@ game_name = "Dabbing Simulator 20XX"
 file_name = "DabbingSimulator20XX.html"
 game_file_name = "DabbingSimulator20XX.html"
 api_icon_name = "dabbingsimulator"
+version_number = "1.0"
+has_discord_rpc = false
 description = "press Space to dab
 -------------------------------------------------------------------------
 each time you dab you gain a point, use the points to buy cosmetics and backgrounds for your David

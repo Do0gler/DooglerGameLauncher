@@ -12,6 +12,8 @@ game_name = "Text Console"
 file_name = "Text-Console.html"
 game_file_name = "Text-Console.html"
 api_icon_name = "textconsole"
+version_number = "1.0"
+has_discord_rpc = false
 description = "-Type whatever in the console-
 If you press up arrow while not typing it inputs your last command
 -list of commands-

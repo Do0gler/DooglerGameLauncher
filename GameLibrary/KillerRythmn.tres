@@ -15,6 +15,8 @@ game_name = "Killer Rythmn!"
 file_name = "Killer-Rythmn.html"
 game_file_name = "Killer-Rythmn.html"
 api_icon_name = "killerrythmn"
+version_number = "1.0"
+has_discord_rpc = false
 description = "=====CONTROLS=====
 WASD or Arrow Keys (or both if ur cool)
 Space to Confirm/Press

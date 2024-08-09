@@ -16,6 +16,8 @@ game_name = "Robo-Escape"
 file_name = "RoboEscape.zip"
 game_file_name = "FallSpyRemake.exe"
 api_icon_name = "roboescapeicon"
+version_number = "1.0"
+has_discord_rpc = false
 description = "A remake of Fall Spy
 =Controls=
 A & D to move

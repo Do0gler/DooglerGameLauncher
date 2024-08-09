@@ -12,6 +12,8 @@ game_name = "Lab Escape"
 file_name = "Lab-Escape.html"
 game_file_name = "Lab-Escape.html"
 api_icon_name = "labescape"
+version_number = "1.0"
+has_discord_rpc = false
 description = "Unfinished platformer
 ===================
 Arrow Keys to move"

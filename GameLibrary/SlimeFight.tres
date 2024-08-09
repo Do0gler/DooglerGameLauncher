@@ -12,6 +12,8 @@ game_name = "Slime Fight!"
 file_name = "Slime-Fight.html"
 game_file_name = "Slime-Fight.html"
 api_icon_name = "slimefight"
+version_number = "1.0"
+has_discord_rpc = false
 description = "=Controls=
 A and D to move
 Spacebar to Jump 

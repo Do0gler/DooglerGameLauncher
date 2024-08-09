@@ -12,6 +12,8 @@ game_name = "Mighty Space Ranger"
 file_name = "Mighty Space Ranger.html"
 game_file_name = "Mighty Space Ranger.html"
 api_icon_name = "mightyspaceranger"
+version_number = "1.0"
+has_discord_rpc = false
 description = "-Controls-
 Press Spacebar To Shoot
 Arrow Keys to Move

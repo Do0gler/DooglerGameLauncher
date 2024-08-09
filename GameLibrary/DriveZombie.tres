@@ -12,7 +12,8 @@ game_name = "Drive! Zombie"
 file_name = "Drive-Zombie.html"
 game_file_name = "Drive-Zombie.html"
 api_icon_name = "drivezombie"
-version_number = 1.0
+version_number = "1.0"
+has_discord_rpc = false
 description = "Move your mouse to go (the car will follow your mouse)
 -------------------------------------------------------------------------
 Drive away from the zombie he will kill you

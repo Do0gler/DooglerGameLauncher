@@ -13,6 +13,7 @@ file_name = "4WizardOG.html"
 game_file_name = "4WizardOG.html"
 api_icon_name = "4wizog"
 version_number = "1.0"
+has_discord_rpc = false
 description = "The original version of 4Wizard
 ======================================
 W A S D to Move
