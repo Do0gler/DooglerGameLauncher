@@ -320,7 +320,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="GameInfoPanel" type="Panel" parent="HSplitContainer"]
-custom_minimum_size = Vector2(560, 0)
+custom_minimum_size = Vector2(950, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ujn0y")
 
@@ -464,6 +464,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/autohide = 0
 split_offset = 500
+dragger_visibility = 1
 
 [node name="DescriptionContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -489,7 +490,7 @@ layout_mode = 2
 columns = 4
 
 [node name="ScreenshotContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
@@ -652,10 +653,10 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 toggle_mode = true
 text = "Alphabetical"
 icon = ExtResource("18_e8lnr")
@@ -668,10 +669,10 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 toggle_mode = true
 text = "Date"
 icon = ExtResource("18_e8lnr")
@@ -684,10 +685,10 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7uypm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7uypm")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_7uypm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7uypm")
 toggle_mode = true
 text = "Size"
 icon = ExtResource("18_e8lnr")

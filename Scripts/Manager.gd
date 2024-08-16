@@ -53,8 +53,8 @@ func search_games(prompt : String):
 			game = game as Game_Data
 			var game_name = game.game_name.to_lower()
 			var punc = [",",".","-",":","!"]
-			for char in punc:
-				game_name = game_name.replace(char, "")
+			for chara in punc:
+				game_name = game_name.replace(chara, "")
 			if game_name.contains(prompt.to_lower()) or game.game_name.to_lower().contains(prompt.to_lower()):
 				relevant_games.append(game.game_name)
 				print(game_name, " Contains ", prompt.to_lower())
@@ -163,7 +163,6 @@ func uninstall_current_game():
 		 "/" + selected_game.file_name.get_basename()
 	recursive_delete_game(current_game_path)
 	display_selected_game()
-	return
 
 func launch_selected_game():
 	if selected_game != null:
@@ -221,7 +220,7 @@ func check_for_updates():
 	display_selected_game()
 
 func update_selected_game():
-	await uninstall_current_game()
+	uninstall_current_game()
 	selected_game.is_outdated = false
 	install_selected_game()
 

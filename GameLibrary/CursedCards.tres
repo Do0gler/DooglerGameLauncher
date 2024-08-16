@@ -18,11 +18,11 @@ version_number = "1.3.3"
 has_discord_rpc = false
 description = "A card battler from the creator of Card Game
 ==How To Play==
-In the main menu before starting, you can create a deck, it must be under 75 power with a minimum of 15 cards and a max of 40
-When the game starts you will automatically draw 4 cards, each round after that you can draw 1 card for free the rest will cost AP
+In the main menu before starting, you can create a deck
+When the game starts you will automatically draw some cards, each round after that you can draw 1 card for free the rest will cost AP
 All cards have a Cost (AP cost to play), Health (amount of damage able to be taken before death), Attack (how much damage the card deals), and optionally an Ability (special card action) which details can be seen by hovering over it
 The goal of the game is to lower your opponents health to 0, which is done by attacking empty spaces on their sides of the board
-For the first round of each players turn their cards will not attack, after that cards will automatically attack after each turn
+For the first round of each players turn their cards will not attack, after that your cards will automatically attack at the end of your turn
 
 "
 engine = "Godot"
