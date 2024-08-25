@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7cvda72khjx3"
-path="res://.godot/imported/Loading.png-0bc0ac7e160a96d0a276d232f4768d10.ctex"
+uid="uid://dye7orgqti82a"
+path="res://.godot/imported/LoadingCircle.png-c412567806384711aa07ec414e84e85e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UIArt/Loading.png"
-dest_files=["res://.godot/imported/Loading.png-0bc0ac7e160a96d0a276d232f4768d10.ctex"]
+source_file="res://UIArt/LoadingCircle.png"
+dest_files=["res://.godot/imported/LoadingCircle.png-c412567806384711aa07ec414e84e85e.ctex"]
 
 [params]
 

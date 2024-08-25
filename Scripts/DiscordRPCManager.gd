@@ -1,8 +1,14 @@
 extends Node
 
 var launched_has_rpc := false
-var rich_presence_enabled := true
 var rpc_suspended := false
+var rich_presence_enabled := true:
+	set(value):
+		rich_presence_enabled = value
+		if value:
+			resume_rpc()
+		else:
+			suspend_rpc()
 
 func _ready():
 	if rich_presence_enabled:
@@ -17,6 +23,9 @@ func suspend_rpc():
 func resume_rpc():
 	rpc_suspended = false
 	DiscordRPC.unclear()
+	if DiscordRPC.app_id == 0:
+		DiscordRPC.app_id = 1266920850339139664
+		enter_library()
 	DiscordRPC.refresh()
 
 func started_playing_game(game : Game_Data):

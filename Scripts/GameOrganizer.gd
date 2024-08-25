@@ -1,7 +1,5 @@
 extends Node
 
-var all_games : Array
-
 func sort_by_date(game_list : Array):
 	for i in range(game_list.size() - 1, -1, -1):
 		for j in range(1, i + 1, 1):
@@ -62,7 +60,7 @@ func sort_by_name(game_list : Array):
 	return game_list
 
 func get_default_order():
-	var all_games : Array = []
+	var _all_games : Array = []
 	var game_library = DirAccess.open("user://DooglerGamesLibrary")
 	var dir = DirAccess.open("res://GameLibrary")
 	if dir:
@@ -83,8 +81,8 @@ func get_default_order():
 							+ "/" + cache_name)
 							game_copy.file_size_mb = cache.game_size_mb
 							game_copy.version_number = cache.game_version
-				all_games.append(game_copy)
+				_all_games.append(game_copy)
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.") 
-	return all_games
+	return _all_games

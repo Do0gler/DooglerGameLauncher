@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://oec37qhorbfc"]
+[gd_scene load_steps=61 format=3 uid="uid://oec37qhorbfc"]
 
 [ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_ueker"]
 [ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://Scenes/GamePanel.tscn" id="2_mdwpe"]
@@ -22,9 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://px5xbmuat7t" path="res://UIArt/DisabledOrderIcon.png" id="18_e8lnr"]
 [ext_resource type="Script" path="res://Scripts/DropdownMenu.gd" id="18_l1ahk"]
 [ext_resource type="Script" path="res://Scripts/DropdownButton.gd" id="19_fdxr5"]
+[ext_resource type="Script" path="res://Scripts/SettingsMenu.gd" id="20_n2urr"]
+[ext_resource type="Texture2D" uid="uid://dlfi4thjep08y" path="res://UIArt/ExpandIcon.png" id="20_qhhpp"]
 [ext_resource type="Script" path="res://Scripts/TwoStateButton.gd" id="21_rxa5c"]
 [ext_resource type="Texture2D" uid="uid://cl6b1j1i7rfkf" path="res://UIArt/CheckIcon.png" id="22_n0w4d"]
-[ext_resource type="Texture2D" uid="uid://7cvda72khjx3" path="res://UIArt/Loading.png" id="25_tmdp8"]
+[ext_resource type="Texture2D" uid="uid://dye7orgqti82a" path="res://UIArt/LoadingCircle.png" id="25_3odqv"]
 [ext_resource type="Texture2D" uid="uid://niduuthn4pe3" path="res://UIArt/DooglerLauncherSplash.png" id="26_2gca0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx832"]
@@ -219,17 +221,22 @@ corner_detail = 1
 [sub_resource type="Theme" id="Theme_osbsf"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_dpfic")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy3jo"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8go6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vr7x"]
+bg_color = Color(0.206554, 0.206554, 0.206554, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5ret"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxe2g"]
 bg_color = Color(0, 0, 0, 0.133333)
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy3jo"]
-bg_color = Color(0.180392, 0.180392, 0.180392, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7uypm"]
 bg_color = Color(0.121569, 0.121569, 0.121569, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8go6"]
 
 [sub_resource type="Animation" id="Animation_42d66"]
 resource_name = "Loading"
@@ -268,7 +275,7 @@ _data = {
 "RESET": SubResource("Animation_d163i")
 }
 
-[node name="Manager" type="Control" node_paths=PackedStringArray("games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "update_button", "screenshot_container", "tag_container")]
+[node name="Manager" type="Control" node_paths=PackedStringArray("settings_menu", "games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "update_button", "screenshot_container", "tag_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -280,6 +287,7 @@ game_panel = ExtResource("2_mdwpe")
 screenshot_panel = ExtResource("3_6basi")
 expandable_list = ExtResource("4_duvmm")
 tag_scene = ExtResource("5_gye0b")
+settings_menu = NodePath("Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/PopupMenu")
 games_list = NodePath("HSplitContainer/GameListPanel/ScrollContainer/VBoxContainer")
 display_description = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer/DescriptionContainer/VBoxContainer/Description")
 display_icon = NodePath("HSplitContainer/GameInfoPanel/VSplitContainer/PanelContainer/MarginContainer/HBoxContainer/TextureRect")
@@ -302,11 +310,11 @@ anchor_bottom = 1.0
 offset_top = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 145
+split_offset = 180
 
 [node name="GameListPanel" type="PanelContainer" parent="HSplitContainer"]
 clip_contents = true
-custom_minimum_size = Vector2(190, 0)
+custom_minimum_size = Vector2(231, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_yx832")
 
@@ -320,7 +328,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
 [node name="GameInfoPanel" type="Panel" parent="HSplitContainer"]
-custom_minimum_size = Vector2(950, 0)
+custom_minimum_size = Vector2(909, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ujn0y")
 
@@ -490,7 +498,7 @@ layout_mode = 2
 columns = 4
 
 [node name="ScreenshotContainer" type="ScrollContainer" parent="HSplitContainer/GameInfoPanel/VSplitContainer/InfoContainer/MarginContainer/HBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 horizontal_scroll_mode = 0
@@ -604,19 +612,91 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 11
 
-[node name="LauncherIcon" type="TextureRect" parent="Titlebar/MarginContainer/HBoxContainer2"]
+[node name="Logo" type="Control" parent="Titlebar/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+focus_mode = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("18_l1ahk")
+
+[node name="LauncherIcon" type="TextureRect" parent="Titlebar/MarginContainer/HBoxContainer2/Logo"]
+layout_mode = 2
+offset_left = 11.0
+offset_right = 51.0
+offset_bottom = 40.0
 texture = ExtResource("16_ls8sd")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Titlebar/MarginContainer/HBoxContainer2"]
+[node name="Title" type="Label" parent="Titlebar/MarginContainer/HBoxContainer2/Logo"]
 layout_mode = 2
+offset_left = 62.0
+offset_top = 8.0
+offset_right = 200.0
+offset_bottom = 31.0
 text = "Doogler Launcher"
+
+[node name="SubItemsContainer" type="PanelContainer" parent="Titlebar/MarginContainer/HBoxContainer2/Logo"]
+visible = false
+offset_left = 41.0
+offset_top = 40.0
+offset_right = 288.0
+offset_bottom = 106.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oy3jo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer"]
+layout_mode = 2
+
+[node name="CheckUpdateButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(108.44, 0)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8go6")
+text = "Check For Updates"
+
+[node name="SettingsButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(108.44, 0)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8go6")
+text = "Settings"
+icon = ExtResource("20_qhhpp")
+icon_alignment = 2
+expand_icon = true
+
+[node name="PopupMenu" type="PopupMenu" parent="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer"]
+title = "Settings"
+position = Vector2i(298, 75)
+size = Vector2i(218, 100)
+keep_title_visible = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_8vr7x")
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 3
+item_0/text = "Settings"
+item_0/separator = true
+item_1/text = "Auto Check For Updates"
+item_1/checkable = 1
+item_1/checked = true
+item_1/id = 1
+item_2/text = "Discord Rich Presence"
+item_2/checkable = 1
+item_2/checked = true
+item_2/id = 2
+script = ExtResource("20_n2urr")
+
+[node name="SearchBar" type="LineEdit" parent="Titlebar/MarginContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r5ret")
+placeholder_text = "Search"
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+clear_button_enabled = true
+select_all_on_focus = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Titlebar/MarginContainer/HBoxContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 5
 
 [node name="DropdownMenu" type="Panel" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(108.44, 0)
@@ -752,22 +832,6 @@ expand_icon = true
 script = ExtResource("21_rxa5c")
 on_icon = ExtResource("22_n0w4d")
 off_icon = ExtResource("18_e8lnr")
-
-[node name="CheckUpdateButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(108.44, 0)
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_x8go6")
-text = "Check For Updates"
-
-[node name="SearchBar" type="LineEdit" parent="Titlebar/MarginContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(430, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Search"
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-clear_button_enabled = true
-select_all_on_focus = true
 
 [node name="Resizer" type="Control" parent="."]
 layout_mode = 1
@@ -923,7 +987,7 @@ offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(100, 100)
-texture = ExtResource("25_tmdp8")
+texture = ExtResource("25_3odqv")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="LoadingScreen"]
@@ -975,6 +1039,13 @@ stretch_mode = 5
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/MinimizeButton" to="Titlebar" method="_on_minimize_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/WindowedToggleButton" to="Titlebar" method="_on_windowed_button_pressed"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer/ExitButton" to="Titlebar" method="_on_exit_button_pressed"]
+[connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/Logo" to="Titlebar/MarginContainer/HBoxContainer2/Logo" method="_on_focus_exited"]
+[connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/Logo" to="Titlebar/MarginContainer/HBoxContainer2/Logo" method="_on_gui_input"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/VBoxContainer/CheckUpdateButton" to="." method="check_for_updates"]
+[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/VBoxContainer/SettingsButton" to="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/PopupMenu" method="settings_opened"]
+[connection signal="id_pressed" from="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/PopupMenu" to="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/PopupMenu" method="_on_id_pressed"]
+[connection signal="text_changed" from="Titlebar/MarginContainer/HBoxContainer2/SearchBar" to="." method="_on_search_bar_text_changed"]
+[connection signal="text_submitted" from="Titlebar/MarginContainer/HBoxContainer2/SearchBar" to="." method="search_games"]
 [connection signal="focus_exited" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_focus_exited"]
 [connection signal="gui_input" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu" method="_on_gui_input"]
 [connection signal="toggled" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu/SubItemsContainer/VBoxContainer/AlphabetSortButton" to="." method="sort_default"]
@@ -989,9 +1060,6 @@ stretch_mode = 5
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/AllGroupButton" method="toggle_state"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" to="." method="group_by_engine"]
 [connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" to="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/DropdownMenu2/SubItemsContainer/VBoxContainer/EngineGroupButton" method="toggle_state"]
-[connection signal="pressed" from="Titlebar/MarginContainer/HBoxContainer2/HBoxContainer/CheckUpdateButton" to="." method="check_for_updates"]
-[connection signal="text_changed" from="Titlebar/MarginContainer/HBoxContainer2/SearchBar" to="." method="_on_search_bar_text_changed"]
-[connection signal="text_submitted" from="Titlebar/MarginContainer/HBoxContainer2/SearchBar" to="." method="search_games"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalBottom" to="Resizer/ResizeVerticalBottom" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeVerticalTop" to="Resizer/ResizeVerticalTop" method="_on_gui_input"]
 [connection signal="gui_input" from="Resizer/ResizeHorizontalRight" to="Resizer/ResizeHorizontalRight" method="_on_gui_input"]

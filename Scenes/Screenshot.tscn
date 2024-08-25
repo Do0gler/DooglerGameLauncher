@@ -15,9 +15,9 @@ Button/styles/hover = SubResource("StyleBoxFlat_wxm3x")
 Button/styles/normal = SubResource("StyleBoxEmpty_bs80j")
 
 [node name="TextureRect" type="TextureRect"]
-custom_minimum_size = Vector2(150, 100)
+custom_minimum_size = Vector2(100, 100)
 offset_right = 150.0
-offset_bottom = 128.0
+offset_bottom = 150.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("1_tha25")

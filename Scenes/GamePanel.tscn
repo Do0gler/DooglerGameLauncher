@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b522ex8pln4qv"]
+[gd_scene load_steps=7 format=3 uid="uid://b522ex8pln4qv"]
 
 [ext_resource type="Script" path="res://Scripts/GamePanelPopulator.gd" id="1_15f7w"]
 [ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="1_xm1vr"]
+[ext_resource type="Texture2D" uid="uid://cdigfrc1h2ygs" path="res://UIArt/ArrowIcon.png" id="3_fkov2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_380xv"]
 
@@ -12,7 +13,7 @@ bg_color = Color(1, 1, 1, 0.439216)
 
 [node name="GamePanel" type="PanelContainer"]
 clip_contents = true
-offset_right = 453.0
+offset_right = 324.0
 offset_bottom = 153.0
 mouse_default_cursor_shape = 2
 script = ExtResource("1_15f7w")
@@ -35,13 +36,22 @@ expand_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 clip_contents = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Game Title"
 label_settings = SubResource("LabelSettings_380xv")
 vertical_alignment = 1
 text_overrun_behavior = 3
+
+[node name="UpdateIndicator" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+visible = false
+modulate = Color(0.219608, 0.745098, 0.239216, 1)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+texture = ExtResource("3_fkov2")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2

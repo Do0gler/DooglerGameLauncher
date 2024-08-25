@@ -25,6 +25,7 @@ GameOrganizer="*res://Scripts/GameOrganizer.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 DiscordRpcManager="*res://Scripts/DiscordRPCManager.gd"
 Updater="*res://Scripts/Updater.gd"
+SettingsManager="*res://Scripts/SettingsManager.gd"
 
 [display]
 

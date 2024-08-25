@@ -1,7 +1,7 @@
 extends Node
 
 var ver_ref_path := "http://dl.dropboxusercontent.com/scl/fi/e9g5x5oxw1qsusqouq9ev/game_versions.txt?rlkey=uf408yr47g8ia2uyq4glsf70c&st=j27ibb9n&dl=0"
-var auto_check_updates := false
+var auto_check_updates := true
 @onready var loading_screen = get_tree().root.get_node("Manager/LoadingScreen")
 
 func check_for_updates():

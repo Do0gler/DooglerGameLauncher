@@ -18,6 +18,7 @@ var http : HTTPRequest
 var sorting_method : Callable = sort_default
 var sorting_method_reversed := false
 var relevant_games := []
+@export var settings_menu : Popup
 @export var games_list : Node
 @export var display_description : Node
 @export var display_icon : Node
@@ -33,9 +34,11 @@ var relevant_games := []
 @onready var search_bar = $Titlebar/MarginContainer/HBoxContainer2/SearchBar
 
 func _ready():
-	$FirstLoadingScreen.show()
 	default_game_order = GameOrganizer.get_default_order()
-	await Updater.check_for_updates()
+	# Check for updates on launch if enabled
+	if Updater.auto_check_updates:
+		$FirstLoadingScreen.show()
+		await Updater.check_for_updates()
 	all_games = GameOrganizer.categorize_by_default(default_game_order)
 	search_games("")
 	var dir = DirAccess.open("user://")
@@ -43,7 +46,10 @@ func _ready():
 		dir.make_dir(library_folder_name)
 		print("Created Library folder")
 	display_games()
-	$FirstLoadingScreen.hide()
+	if Updater.auto_check_updates:
+		# Wait one frame for display_games() to finish before showing
+		await get_tree().process_frame
+		$FirstLoadingScreen.hide()
 
 func search_games(prompt : String):
 	var no_spaces_prompt = prompt.replace(" ","")
@@ -57,7 +63,6 @@ func search_games(prompt : String):
 				game_name = game_name.replace(chara, "")
 			if game_name.contains(prompt.to_lower()) or game.game_name.to_lower().contains(prompt.to_lower()):
 				relevant_games.append(game.game_name)
-				print(game_name, " Contains ", prompt.to_lower())
 	else:
 		for game in default_game_order:
 			relevant_games.append(game.game_name)
@@ -217,6 +222,7 @@ func get_game_cache(game : Game_Data, ver := "") -> GameCache:
 
 func check_for_updates():
 	await Updater.check_for_updates()
+	display_games()
 	display_selected_game()
 
 func update_selected_game():
