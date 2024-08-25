@@ -638,6 +638,7 @@ text = "Doogler Launcher"
 
 [node name="SubItemsContainer" type="PanelContainer" parent="Titlebar/MarginContainer/HBoxContainer2/Logo"]
 visible = false
+layout_mode = 0
 offset_left = 41.0
 offset_top = 40.0
 offset_right = 288.0
@@ -650,12 +651,14 @@ layout_mode = 2
 [node name="CheckUpdateButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/VBoxContainer"]
 custom_minimum_size = Vector2(108.44, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x8go6")
 text = "Check For Updates"
 
 [node name="SettingsButton" type="Button" parent="Titlebar/MarginContainer/HBoxContainer2/Logo/SubItemsContainer/VBoxContainer"]
 custom_minimum_size = Vector2(108.44, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x8go6")
 text = "Settings"
 icon = ExtResource("20_qhhpp")
