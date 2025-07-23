@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Game_Data" load_steps=8 format=3 uid="uid://cip73pxisckym"]
+
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_ajjlt"]
+[ext_resource type="Texture2D" uid="uid://dob611losufde" path="res://GameArt/ViralTweetGenerator/VTGIcon.png" id="1_tp3p5"]
+[ext_resource type="Texture2D" uid="uid://btneskmigdybt" path="res://GameArt/ViralTweetGenerator/Screenshot1.png" id="1_uw8mr"]
+[ext_resource type="Texture2D" uid="uid://bflnkrdyqih1p" path="res://GameArt/ViralTweetGenerator/Screenshot3.png" id="2_tp3p5"]
+[ext_resource type="Texture2D" uid="uid://bc6hkjychuy3n" path="res://GameArt/ViralTweetGenerator/Screenshot2.png" id="3_j04h3"]
+
+[sub_resource type="Gradient" id="Gradient_tp3p5"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j04h3"]
+gradient = SubResource("Gradient_tp3p5")
+
+[resource]
+script = ExtResource("1_ajjlt")
+file_size_mb = 81.4
+download_path = "http://dl.dropboxusercontent.com/scl/fi/9aw69vqoeewksqqynkf40/ViralTweetGen.zip?rlkey=834rnezuw5o4dj8rgur1youqo&st=ywng7d3j&dl=0"
+game_name = "Viral Tweet Generator"
+file_name = "ViralTweetGen.zip"
+game_file_name = "ViralTweetGen.exe"
+api_icon_name = "logo"
+version_number = "1.0"
+has_discord_rpc = false
+description = "Nowadays twitter is nothing but useless ragebait takes, so here you go!
+Generate as many horrible takes as you want with the click of a button.
+
+You can also press the arrows to change the tweet template."
+engine = "Godot"
+creation_date = "12/20/2024"
+icon = ExtResource("1_tp3p5")
+background = SubResource("GradientTexture2D_j04h3")
+screenshots = Array[Texture2D]([ExtResource("1_uw8mr"), ExtResource("2_tp3p5"), ExtResource("3_j04h3")])
+tags = Array[String](["Software"])
+metadata/_custom_type_script = "uid://8n27it0a1hip"

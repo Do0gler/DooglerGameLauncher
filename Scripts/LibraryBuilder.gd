@@ -14,6 +14,6 @@ func _run():
 			var game_data = (load(game_data_path) as Game_Data)
 			dict[game_data.game_name] = game_data.version_number
 			file_name = library_folder.get_next()
-	var file = FileAccess.open("res://game_versions.txt", FileAccess.WRITE)
+	var file = FileAccess.open("user://game_versions.txt", FileAccess.WRITE)
 	file.store_string(str(dict))
 	print("Saved version data file")
