@@ -5,6 +5,7 @@ extends Button
 @export var state := false
 
 func _ready():
+	pressed.connect(toggle_state)
 	display()
 
 func display():
