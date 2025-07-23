@@ -13,7 +13,7 @@ func _on_toggled(toggle):
 	icon = disabled_icon if toggle else enabled_icon
 	expand_contract(!toggle)
 
-func add_item(item : Node):
+func add_item(item: Node):
 	items_control.get_child(0).add_child(item)
 	number_of_items += 1
 
@@ -26,7 +26,7 @@ func update_visuals():
 		items_control.custom_minimum_size.y = last_child.position.y + last_child.size.y
 
 func expand_contract(will_expand):
-	var expand_to : int = 0
+	var expand_to: int = 0
 	if will_expand:
 		var items = items_control.get_child(0).get_children()
 		if !items.is_empty():

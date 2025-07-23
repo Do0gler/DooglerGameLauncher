@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Game_Data" load_steps=7 format=3 uid="uid://q5tda35pysph"]
 
 [ext_resource type="Texture2D" uid="uid://bvxsc02u3pkey" path="res://GameArt/RocketFast/RocketFastScreenshot1.png" id="1_408px"]
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_d1upc"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_d1upc"]
 [ext_resource type="Texture2D" uid="uid://dgfwetqpgptin" path="res://GameArt/RocketFast/coverImage.png" id="1_upc7q"]
 [ext_resource type="Texture2D" uid="uid://1bfrf7kqgv3g" path="res://GameArt/RocketFast/RocketFastScreenshot2.png" id="2_0ei3b"]
 [ext_resource type="Texture2D" uid="uid://pboq131icomg" path="res://GameArt/RocketFast/rocket.png" id="2_1woir"]

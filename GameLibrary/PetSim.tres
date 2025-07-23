@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Game_Data" load_steps=4 format=3 uid="uid://7xq8r6wtl84w"]
 
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_oni3p"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_oni3p"]
 [ext_resource type="Texture2D" uid="uid://bt78b1kacf4lj" path="res://GameArt/PetSim/PetGameBG.png" id="1_vlmjn"]
 [ext_resource type="Texture2D" uid="uid://d1g2q7qrytn0d" path="res://GameArt/PetSim/PetGameIcon.png" id="2_ppows"]
 
@@ -20,4 +20,4 @@ creation_date = "02/16/2023"
 icon = ExtResource("2_ppows")
 background = ExtResource("1_vlmjn")
 screenshots = Array[Texture2D]([])
-tags = Array[String](["Unfinished", "Pet Simulator", "Clicker", "Pixel Art"])
+tags = Array[String](["Pet Simulator", "Clicker", "Pixel Art", "Unfinished"])

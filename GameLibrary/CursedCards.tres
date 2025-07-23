@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Game_Data" load_steps=6 format=3 uid="uid://dmt63emev8n5g"]
 
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_0qyhc"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_0qyhc"]
 [ext_resource type="Texture2D" uid="uid://d2gmyujdu4cpu" path="res://GameArt/CursedCards/Logo.png" id="1_chgi8"]
 [ext_resource type="Texture2D" uid="uid://rgogihkw1mit" path="res://GameArt/CursedCards/BG.png" id="1_ubmj0"]
 [ext_resource type="Texture2D" uid="uid://ckccqtt2ba0rc" path="res://GameArt/CursedCards/Screenshot1.png" id="2_l6e38"]
@@ -30,4 +30,4 @@ creation_date = "07/25/2024"
 icon = ExtResource("1_chgi8")
 background = ExtResource("1_ubmj0")
 screenshots = Array[Texture2D]([ExtResource("2_l6e38"), ExtResource("3_3qu8a")])
-tags = Array[String](["Multiplayer", "Pixel Art", "1-Bit", "Card Battler"])
+tags = Array[String](["Multiplayer", "Pixel Art", "1-Bit", "Card Battler", "Unfinished"])

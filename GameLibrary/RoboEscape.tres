@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Game_Data" load_steps=8 format=3 uid="uid://dretg2nqgj2vs"]
 
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_4ph0x"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_4ph0x"]
 [ext_resource type="Texture2D" uid="uid://df824qp0ys0s4" path="res://GameArt/RoboEscape/RoboEscapeScreenshot1.png" id="1_pvhdr"]
 [ext_resource type="Texture2D" uid="uid://dc0idy3arc0ku" path="res://GameArt/RoboEscape/Icon Cover.png" id="1_sb55i"]
 [ext_resource type="Texture2D" uid="uid://cllpgakry8ov2" path="res://GameArt/RoboEscape/RoboEscapeIcon.png" id="2_ff1mc"]

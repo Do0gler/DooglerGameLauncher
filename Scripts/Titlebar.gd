@@ -1,8 +1,8 @@
 extends PanelContainer
 
 var following = false
-var dragging_start_pos : Vector2
-@export var resize_controls : Node
+var dragging_start_pos: Vector2
+@export var resize_controls: Node
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton:

@@ -17,8 +17,8 @@ func load_settings():
 
 func save_settings():
 	var settings_dict := {
-		"auto_check_updates" :  manager.settings_menu.is_item_checked(1),
-		"rich_presence_enabled" : manager.settings_menu.is_item_checked(2)
+		"auto_check_updates":  manager.settings_menu.is_item_checked(1),
+		"rich_presence_enabled": manager.settings_menu.is_item_checked(2)
 	}
 	var settings_file = FileAccess.open(settings_file_path, FileAccess.WRITE)
 	settings_file.store_string(JSON.stringify(settings_dict))

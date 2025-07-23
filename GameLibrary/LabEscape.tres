@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://yvikj068iu1c" path="res://GameArt/LabEscape/LabEscapeIcon.png" id="1_kexsg"]
 [ext_resource type="Texture2D" uid="uid://bfcimk8gue2jo" path="res://GameArt/LabEscape/LabEscapeBG.png" id="1_t26vi"]
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_vm1go"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_vm1go"]
 
 [resource]
 script = ExtResource("1_vm1go")
@@ -22,4 +22,4 @@ creation_date = "12/06/2021"
 icon = ExtResource("1_kexsg")
 background = ExtResource("1_t26vi")
 screenshots = Array[Texture2D]([])
-tags = Array[String](["Platformer", "Speedrunning"])
+tags = Array[String](["Platformer", "Speedrunning", "Unfinished"])

@@ -1,36 +1,37 @@
 extends Control
 class_name Manager
 
-@export var game_panel : PackedScene
-@export var screenshot_panel : PackedScene
-@export var expandable_list : PackedScene
-@export var tag_scene : PackedScene
-var library_folder_name : String = "DooglerGamesLibrary"
-var selected_game : Game_Data
+@export var game_panel: PackedScene
+@export var screenshot_panel: PackedScene
+@export var expandable_list: PackedScene
+@export var tag_scene: PackedScene
+var library_folder_name: String = "DooglerGamesLibrary"
+var selected_game: Game_Data
+var selected_game_node: GamePanel
 var current_game_pid = 0
 var game_launched = false
-var default_game_order : Array
-var all_games : Dictionary
+var default_game_order: Array
+var all_games: Dictionary
 var can_switch_games = true
 var launched_game_is_exe = false
 var downloading = false
-var http : HTTPRequest
-var sorting_method : Callable = sort_default
+var http: HTTPRequest
+var sorting_method: Callable = sort_default
 var sorting_method_reversed := false
 var relevant_games := []
-@export var settings_menu : Popup
-@export var games_list : Node
-@export var display_description : Node
-@export var display_icon : Node
-@export var display_bg : Node
-@export var display_name : Node
-@export var install_button : Node
-@export var stop_button : Node
-@export var progress_bar : Node
-@export var uninstall_button : Node
-@export var update_button : Node
-@export var screenshot_container : Node
-@export var tag_container : Node
+@export var settings_menu: Popup
+@export var games_list: Node
+@export var display_description: Node
+@export var display_icon: Node
+@export var display_bg: Node
+@export var display_name: Node
+@export var install_button: Node
+@export var stop_button: Node
+@export var progress_bar: Node
+@export var uninstall_button: Node
+@export var update_button: Node
+@export var screenshot_container: Node
+@export var tag_container: Node
 @onready var search_bar = $Titlebar/MarginContainer/HBoxContainer2/SearchBar
 
 func _ready():
@@ -51,7 +52,7 @@ func _ready():
 		await get_tree().process_frame
 		$FirstLoadingScreen.hide()
 
-func search_games(prompt : String):
+func search_games(prompt: String):
 	var no_spaces_prompt = prompt.replace(" ","")
 	if no_spaces_prompt != "":
 		relevant_games.clear()
@@ -69,7 +70,7 @@ func search_games(prompt : String):
 	search_bar.release_focus()
 	display_games()
 
-func _on_search_bar_text_changed(new_text : String):
+func _on_search_bar_text_changed(new_text: String):
 	if new_text == "":
 		search_games(new_text)
 		search_bar.release_focus()
@@ -113,9 +114,10 @@ func display_games():
 				new_game_panel.update_display()
 		new_list_script.update_visuals()
 
-func set_current_game(game_data : Game_Data):
+func set_current_game(game: GamePanel):
 	if can_switch_games:
-		selected_game = game_data
+		selected_game_node = game
+		selected_game = game.game_data
 		display_selected_game()
 
 func install_selected_game():
@@ -154,7 +156,7 @@ func install_selected_game():
 		var new_ver_ref_file = FileAccess.open("user://game_versions.txt", FileAccess.READ)
 		var downloaded_ver := ""
 		if new_ver_ref_file != null:
-			var ver_dict : Dictionary = JSON.parse_string(new_ver_ref_file.get_as_text())
+			var ver_dict: Dictionary = JSON.parse_string(new_ver_ref_file.get_as_text())
 			downloaded_ver = ver_dict[selected_game.game_name]
 		get_game_cache(selected_game, downloaded_ver)
 		display_selected_game()
@@ -201,7 +203,7 @@ func launch_selected_game():
 				game_launched = true
 				launched_game_is_exe = false
 
-func get_game_cache(game : Game_Data, ver := "") -> GameCache:
+func get_game_cache(game: Game_Data, ver := "") -> GameCache:
 	# Load game cached data if exists else calculate size and create cache
 	var game_folder_path = "user://" + library_folder_name +\
 	 "/" + game.file_name.get_basename()
@@ -228,6 +230,7 @@ func check_for_updates():
 func update_selected_game():
 	uninstall_current_game()
 	selected_game.is_outdated = false
+	selected_game_node.update_display()
 	install_selected_game()
 
 func display_selected_game():
@@ -251,14 +254,14 @@ func display_selected_game():
 	var game_folder_path = "user://" + library_folder_name +\
 	 "/" + selected_game.file_name.get_basename()
 	var dir = DirAccess.open(game_folder_path)
-	var game_size : String
-	var game_ver : String
+	var game_size: String
+	var game_ver: String
 	if dir:
 		if dir.file_exists(selected_game.game_file_name):
 			var cache = get_game_cache(selected_game)
 			game_size = str(cache.game_size_mb)
 			game_ver = cache.game_version
-			#Show buttons
+			# Show buttons
 			if selected_game.is_outdated:
 				uninstall_button.hide()
 				update_button.show()
@@ -290,7 +293,7 @@ func _on_screenshot_popup_open(screenshot_index):
 func _on_screenshot_popup_close_requested():
 	$ScreenshotPopup.hide()
 
-func extract_zip_file(file_path : String, extract_to_path : String):
+func extract_zip_file(file_path: String, extract_to_path: String):
 	var dir := DirAccess.open(extract_to_path)
 	var reader := ZIPReader.new()
 	var err := reader.open(file_path)
@@ -359,18 +362,20 @@ func sort_by_size(reversed := true):
 	sorting_method = sort_by_date
 	sorting_method_reversed = reversed
 
-func group_by_engine():
-	all_games = GameOrganizer.categorize_by_engine(default_game_order)
+func group_games(method: String):
+	match method:
+		"Status":
+			all_games = GameOrganizer.categorize_by_status(default_game_order)
+		"Engine":
+			all_games = GameOrganizer.categorize_by_engine(default_game_order)
+		"Default":
+			all_games = GameOrganizer.categorize_by_default(default_game_order)
+		_:
+			all_games = GameOrganizer.categorize_by_default(default_game_order)
 	sorting_method.call(sorting_method_reversed)
 	display_games()
 	get_tree().call_group("GroupButtons", "turn_off")
 
-func group_by_default():
-	all_games = GameOrganizer.categorize_by_default(default_game_order)
-	sorting_method.call(sorting_method_reversed)
-	display_games()
-	get_tree().call_group("GroupButtons", "turn_off")
-	
 func recursive_size_game(dirPath):
 	var size_in_bytes = 0
 	var dir = DirAccess.open(dirPath)

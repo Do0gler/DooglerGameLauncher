@@ -4,7 +4,7 @@ extends EditorScript
 
 # Called when the script is executed (using File -> Run in Script Editor).
 func _run():
-	var dict : Dictionary
+	var dict: Dictionary
 	var library_folder = DirAccess.open("res://GameLibrary")
 	if library_folder:
 		library_folder.list_dir_begin()

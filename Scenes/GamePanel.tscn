@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b522ex8pln4qv"]
 
-[ext_resource type="Script" path="res://Scripts/GamePanelPopulator.gd" id="1_15f7w"]
+[ext_resource type="Script" uid="uid://whoon0axbgsg" path="res://Scripts/GamePanelPopulator.gd" id="1_15f7w"]
 [ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="1_xm1vr"]
 [ext_resource type="Texture2D" uid="uid://cdigfrc1h2ygs" path="res://UIArt/ArrowIcon.png" id="3_fkov2"]
 

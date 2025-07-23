@@ -1,7 +1,7 @@
 extends Button
 
-@export var on_icon : Texture2D = preload("res://UIArt/RegularOrderIcon.png")
-@export var off_icon : Texture2D = preload("res://UIArt/ReverseOrderIcon.png")
+@export var on_icon: Texture2D = preload("res://UIArt/RegularOrderIcon.png")
+@export var off_icon: Texture2D = preload("res://UIArt/ReverseOrderIcon.png")
 @export var state := false
 
 func _ready():

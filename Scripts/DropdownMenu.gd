@@ -1,6 +1,6 @@
 extends Control
 
-var sub_items : Array[Node]
+var sub_items: Array[Node]
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton:

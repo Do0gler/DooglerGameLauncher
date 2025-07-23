@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Game_Data" load_steps=7 format=3 uid="uid://cb541d4dbdthg"]
 
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_2d5ts"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_2d5ts"]
 [ext_resource type="Texture2D" uid="uid://b6kgy5e5rt5be" path="res://GameArt/KillerRythmn/KillerRythmnBG.png" id="1_d8djn"]
 [ext_resource type="Texture2D" uid="uid://dlawmoyk82a47" path="res://GameArt/KillerRythmn/KillerRythmnIcon.png" id="1_pxk3u"]
 [ext_resource type="Texture2D" uid="uid://drg7sfga2nyxd" path="res://GameArt/KillerRythmn/KillerRythmnScreenshot1.png" id="3_l7uhc"]
@@ -27,4 +27,4 @@ creation_date = "11/15/2021"
 icon = ExtResource("1_pxk3u")
 background = ExtResource("1_d8djn")
 screenshots = Array[Texture2D]([ExtResource("3_l7uhc"), ExtResource("4_vh7vc"), ExtResource("5_6ct3h")])
-tags = Array[String](["Rythmn"])
+tags = Array[String](["Rythmn", "Unfinished"])

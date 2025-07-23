@@ -28,7 +28,7 @@ func resume_rpc():
 		enter_library()
 	DiscordRPC.refresh()
 
-func started_playing_game(game : Game_Data):
+func started_playing_game(game: Game_Data):
 	if rich_presence_enabled:
 		DiscordRPC.details = "Playing " + game.game_name
 		DiscordRPC.large_image = game.api_icon_name
