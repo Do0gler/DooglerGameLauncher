@@ -9,12 +9,12 @@
 [resource]
 script = ExtResource("3_lxqwq")
 file_size_mb = 25.46
-download_path = "http://dl.dropboxusercontent.com/scl/fi/5qjh4yidczpj6mnlbx3aj/CardGameDE1.2.zip?rlkey=sm9qysjwqvcusjopvsxmdm646&st=33gzftp3&dl=0"
+download_path = "http://dl.dropboxusercontent.com/scl/fi/ckozw33r8325dwp12s9wl/CardGameDE.zip?rlkey=wj813vcuij0iupse4vu104rfe&st=kpkvs78f&dl=0"
 game_name = "Card Game: Definitive Edition"
-file_name = "CardGameDE1.2.zip"
+file_name = "CardGameDE.zip"
 game_file_name = "CardGameDE.exe"
 api_icon_name = "cardgamede"
-version_number = "1.0"
+version_number = "1.3"
 has_discord_rpc = true
 description = "The definitive edition of the hit game: Card Game.
 
