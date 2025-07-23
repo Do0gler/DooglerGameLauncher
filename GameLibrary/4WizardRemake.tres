@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Game_Data" load_steps=7 format=3 uid="uid://cmpfg6j2pyxf"]
 
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="1_47ifv"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="1_47ifv"]
 [ext_resource type="Texture2D" uid="uid://cdnnwt6slftxc" path="res://GameArt/4WizRemake/4WizRemakeBG.png" id="1_k3tcl"]
 [ext_resource type="Texture2D" uid="uid://dg163vaajysud" path="res://GameArt/4WizRemake/4WizRemakeIcon.png" id="2_lxn37"]
 [ext_resource type="Texture2D" uid="uid://bb7qyspm4evkm" path="res://GameArt/4WizRemake/4WizScreenshot1.png" id="3_xm4dq"]
@@ -15,7 +15,7 @@ game_name = "4Wizard Remake"
 file_name = "4Wizard-2.1.2.html"
 game_file_name = "4Wizard-2.1.2.html"
 api_icon_name = "4wizremake"
-version_number = "1.0"
+version_number = "2.1.2"
 has_discord_rpc = false
 description = "An Arcade 4-Directional Shooter 
 

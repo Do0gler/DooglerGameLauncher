@@ -1,6 +1,6 @@
 [gd_scene load_steps=61 format=3 uid="uid://oec37qhorbfc"]
 
-[ext_resource type="Script" path="res://Scripts/Manager.gd" id="1_ueker"]
+[ext_resource type="Script" uid="uid://crucu4uf15a8y" path="res://Scripts/Manager.gd" id="1_ueker"]
 [ext_resource type="PackedScene" uid="uid://b522ex8pln4qv" path="res://Scenes/GamePanel.tscn" id="2_mdwpe"]
 [ext_resource type="PackedScene" uid="uid://bugfw5kivabqq" path="res://Scenes/Screenshot.tscn" id="3_6basi"]
 [ext_resource type="Texture2D" uid="uid://de3pkwnuk3tp3" path="res://icon.svg" id="4_dhwsy"]
@@ -11,20 +11,20 @@
 [ext_resource type="Texture2D" uid="uid://bb7qyspm4evkm" path="res://GameArt/4WizRemake/4WizScreenshot1.png" id="6_nmrpw"]
 [ext_resource type="Texture2D" uid="uid://dbf0r0et3ci4d" path="res://UIArt/XIconSelected.png" id="7_p7dyr"]
 [ext_resource type="Texture2D" uid="uid://b0nhw1nn2wb17" path="res://UIArt/MinimizeIcon.png" id="9_e6v2w"]
-[ext_resource type="Script" path="res://Scripts/Titlebar.gd" id="9_k5gd2"]
+[ext_resource type="Script" uid="uid://c2fimpvfjcxp" path="res://Scripts/Titlebar.gd" id="9_k5gd2"]
 [ext_resource type="Texture2D" uid="uid://c18vjxsx8flry" path="res://UIArt/MinimizeIconHover.png" id="10_dnwn3"]
 [ext_resource type="Texture2D" uid="uid://cafw87ja78c2k" path="res://UIArt/WindowedIcon.png" id="11_5j8ed"]
 [ext_resource type="Texture2D" uid="uid://dxy0mmxe8pel4" path="res://UIArt/WindowedIconHover.png" id="12_fgn12"]
 [ext_resource type="Texture2D" uid="uid://b17wsqidv4n3x" path="res://UIArt/ExitIcon.png" id="13_gbgqp"]
 [ext_resource type="Texture2D" uid="uid://cau4bua1ogggq" path="res://UIArt/ExitIconHover.png" id="14_510ox"]
 [ext_resource type="Texture2D" uid="uid://c2tsvworqta0" path="res://DooglerLauncherIcon.png" id="16_ls8sd"]
-[ext_resource type="Script" path="res://Scripts/Resize.gd" id="17_nlgti"]
+[ext_resource type="Script" uid="uid://do53ua6hntvit" path="res://Scripts/Resize.gd" id="17_nlgti"]
 [ext_resource type="Texture2D" uid="uid://px5xbmuat7t" path="res://UIArt/DisabledOrderIcon.png" id="18_e8lnr"]
-[ext_resource type="Script" path="res://Scripts/DropdownMenu.gd" id="18_l1ahk"]
-[ext_resource type="Script" path="res://Scripts/DropdownButton.gd" id="19_fdxr5"]
-[ext_resource type="Script" path="res://Scripts/SettingsMenu.gd" id="20_n2urr"]
+[ext_resource type="Script" uid="uid://dapermiv8cmki" path="res://Scripts/DropdownMenu.gd" id="18_l1ahk"]
+[ext_resource type="Script" uid="uid://b2ulgofha1igd" path="res://Scripts/DropdownButton.gd" id="19_fdxr5"]
+[ext_resource type="Script" uid="uid://dwrwa1yaccfhr" path="res://Scripts/SettingsMenu.gd" id="20_n2urr"]
 [ext_resource type="Texture2D" uid="uid://dlfi4thjep08y" path="res://UIArt/ExpandIcon.png" id="20_qhhpp"]
-[ext_resource type="Script" path="res://Scripts/TwoStateButton.gd" id="21_rxa5c"]
+[ext_resource type="Script" uid="uid://punqwyy8cfu4" path="res://Scripts/TwoStateButton.gd" id="21_rxa5c"]
 [ext_resource type="Texture2D" uid="uid://cl6b1j1i7rfkf" path="res://UIArt/CheckIcon.png" id="22_n0w4d"]
 [ext_resource type="Texture2D" uid="uid://dye7orgqti82a" path="res://UIArt/LoadingCircle.png" id="25_3odqv"]
 [ext_resource type="Texture2D" uid="uid://niduuthn4pe3" path="res://UIArt/DooglerLauncherSplash.png" id="26_2gca0"]
@@ -271,8 +271,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hpm1r"]
 _data = {
-"Loading": SubResource("Animation_42d66"),
-"RESET": SubResource("Animation_d163i")
+&"Loading": SubResource("Animation_42d66"),
+&"RESET": SubResource("Animation_d163i")
 }
 
 [node name="Manager" type="Control" node_paths=PackedStringArray("settings_menu", "games_list", "display_description", "display_icon", "display_bg", "display_name", "install_button", "stop_button", "progress_bar", "uninstall_button", "update_button", "screenshot_container", "tag_container")]
@@ -675,6 +675,7 @@ hide_on_checkable_item_selection = false
 allow_search = false
 item_count = 3
 item_0/text = "Settings"
+item_0/id = 0
 item_0/separator = true
 item_1/text = "Auto Check For Updates"
 item_1/checkable = 1
@@ -972,7 +973,7 @@ color = Color(0, 0, 0, 0.588235)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen"]
 libraries = {
-"": SubResource("AnimationLibrary_hpm1r")
+&"": SubResource("AnimationLibrary_hpm1r")
 }
 autoplay = "Loading"
 

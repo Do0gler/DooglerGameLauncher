@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://g0a0lvncnjbb" path="res://GameArt/CardGameDE/CardGameDEBG.png" id="1_bmcmx"]
 [ext_resource type="Texture2D" uid="uid://cnqmvqav7yom4" path="res://GameArt/CardGameDE/CardGameDEIcon.png" id="2_5t44f"]
-[ext_resource type="Script" path="res://Scripts/GameData.gd" id="3_lxqwq"]
+[ext_resource type="Script" uid="uid://8n27it0a1hip" path="res://Scripts/GameData.gd" id="3_lxqwq"]
 [ext_resource type="Texture2D" uid="uid://bwxp3ahcfluv2" path="res://GameArt/CardGameDE/CardGameDE2.png" id="3_tullv"]
 [ext_resource type="Texture2D" uid="uid://c20u057x88d0n" path="res://GameArt/CardGameDE/CardGameDE1.png" id="4_q4hqe"]
 
@@ -10,7 +10,7 @@
 script = ExtResource("3_lxqwq")
 file_size_mb = 25.46
 download_path = "http://dl.dropboxusercontent.com/scl/fi/5qjh4yidczpj6mnlbx3aj/CardGameDE1.2.zip?rlkey=sm9qysjwqvcusjopvsxmdm646&st=33gzftp3&dl=0"
-game_name = "Card Game: Definitive Edtion"
+game_name = "Card Game: Definitive Edition"
 file_name = "CardGameDE1.2.zip"
 game_file_name = "CardGameDE.exe"
 api_icon_name = "cardgamede"
