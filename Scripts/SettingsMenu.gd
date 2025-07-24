@@ -11,5 +11,5 @@ func _on_id_pressed(id: int) -> void:
 			DiscordRpcManager.rich_presence_enabled = false
 	SettingsManager.save_settings()
 
-func settings_opened():
+func settings_opened() -> void:
 	show()

@@ -4,7 +4,7 @@ var ver_ref_path := "http://dl.dropboxusercontent.com/scl/fi/e9g5x5oxw1qsusqouq9
 var auto_check_updates := true
 @onready var loading_screen = get_tree().root.get_node("Manager/LoadingScreen")
 
-func check_for_updates():
+func check_for_updates() -> void:
 	# Download Version Refrence file
 	loading_screen.show()
 	var http := HTTPRequest.new()

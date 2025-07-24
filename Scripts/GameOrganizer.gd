@@ -1,6 +1,6 @@
 extends Node
 
-func sort_by_date(game_list: Array):
+func sort_by_date(game_list: Array) -> Array:
 	for i in range(game_list.size() - 1, -1, -1):
 		for j in range(1, i + 1, 1):
 			if compare_dates(game_list[j - 1].creation_date, game_list[j].creation_date):
@@ -9,13 +9,13 @@ func sort_by_date(game_list: Array):
 				game_list[j] = temp
 	return game_list
 
-func compare_names(name1: String, name2: String):
+func compare_names(name1: String, name2: String) -> bool:
 	return name1.to_lower() < name2.to_lower()
 
-func compare_file_size(size1: float, size2: float):
+func compare_file_size(size1: float, size2: float) -> bool:
 	return size1 <= size2
 
-func sort_by_size(game_list: Array):
+func sort_by_size(game_list: Array) -> Array:
 	for i in range(game_list.size() - 1, -1, -1):
 		for j in range(1, i + 1, 1):
 			if compare_file_size(game_list[j - 1].file_size_mb, game_list[j].file_size_mb):
@@ -24,7 +24,7 @@ func sort_by_size(game_list: Array):
 				game_list[j] = temp
 	return game_list
 
-func compare_dates(date1: String, date2: String): # Check if date one is less than date two
+func compare_dates(date1: String, date2: String) -> bool: # Check if date one is less than date two
 	var date1_array = date1.split("/", false)
 	var date2_array = date2.split("/", false)
 	var array_order = [2,0,1]
@@ -32,13 +32,11 @@ func compare_dates(date1: String, date2: String): # Check if date one is less th
 		for i in array_order:
 			if int(date1_array[i]) < int(date2_array[i]):
 				return true
-			else:
-				if int(date1_array[i]) != int(date2_array[i]):
-					return false
-	else:
-		return true
+			elif int(date1_array[i]) != int(date2_array[i]):
+				return false
+	return true
 
-func categorize_by_engine(game_list: Array):
+func categorize_by_engine(game_list: Array) -> Dictionary:
 	var grouped_games: Dictionary
 	for game in game_list:
 		if !grouped_games.has(game.engine):
@@ -46,7 +44,7 @@ func categorize_by_engine(game_list: Array):
 		grouped_games[game.engine].append(game)
 	return grouped_games
 
-func categorize_by_status(game_list: Array):
+func categorize_by_status(game_list: Array) -> Dictionary:
 	game_list = game_list.duplicate()
 	var grouped_games: Dictionary = {
 		"Unfinished": [],
@@ -64,11 +62,11 @@ func categorize_by_status(game_list: Array):
 	
 	return grouped_games
 
-func categorize_by_default(game_list: Array):
+func categorize_by_default(game_list: Array) -> Dictionary:
 	var grouped_games := {"All": game_list}
 	return grouped_games
 
-func sort_by_name(game_list: Array):
+func sort_by_name(game_list: Array) -> Array:
 	for i in range(game_list.size() - 1, -1, -1):
 		for j in range(1, i + 1, 1):
 			if !compare_names(game_list[j - 1].game_name, game_list[j].game_name):
@@ -77,7 +75,7 @@ func sort_by_name(game_list: Array):
 				game_list[j] = temp
 	return game_list
 
-func get_default_order():
+func get_default_order() -> Array:
 	var _all_games: Array = []
 	var game_library = DirAccess.open("user://DooglerGamesLibrary")
 	var dir = DirAccess.open("res://GameLibrary")

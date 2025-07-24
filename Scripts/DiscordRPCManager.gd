@@ -10,17 +10,17 @@ var rich_presence_enabled := true:
 		else:
 			suspend_rpc()
 
-func _ready():
+func _ready() -> void:
 	if rich_presence_enabled:
 		DiscordRPC.app_id = 1266920850339139664
 		enter_library()
 
-func suspend_rpc():
+func suspend_rpc() -> void:
 	rpc_suspended = true
 	DiscordRPC.clear()
 	DiscordRPC.refresh()
 
-func resume_rpc():
+func resume_rpc() -> void:
 	rpc_suspended = false
 	DiscordRPC.unclear()
 	if DiscordRPC.app_id == 0:
@@ -28,14 +28,14 @@ func resume_rpc():
 		enter_library()
 	DiscordRPC.refresh()
 
-func started_playing_game(game: Game_Data):
+func started_playing_game(game: Game_Data) -> void:
 	if rich_presence_enabled:
 		DiscordRPC.details = "Playing " + game.game_name
 		DiscordRPC.large_image = game.api_icon_name
 		DiscordRPC.start_timestamp = int(Time.get_unix_time_from_system())
 		DiscordRPC.refresh()
 
-func enter_library():
+func enter_library() -> void:
 	if rich_presence_enabled:
 		DiscordRPC.details = "Browsing Library"
 		DiscordRPC.large_image = "logo"

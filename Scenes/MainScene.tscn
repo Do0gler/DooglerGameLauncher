@@ -689,6 +689,7 @@ item_2/id = 2
 script = ExtResource("20_n2urr")
 
 [node name="SearchBar" type="LineEdit" parent="Titlebar/MarginContainer/HBoxContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
 size_flags_horizontal = 3

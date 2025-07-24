@@ -2,10 +2,10 @@ extends Control
 
 var sub_items: Array[Node]
 
-func _on_gui_input(event):
+func _on_gui_input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed:
 			$SubItemsContainer.visible = !$SubItemsContainer.visible
 
-func _on_focus_exited():
+func _on_focus_exited() -> void:
 	$SubItemsContainer.visible = false

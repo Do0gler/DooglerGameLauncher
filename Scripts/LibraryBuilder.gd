@@ -3,7 +3,7 @@ extends EditorScript
 
 
 # Called when the script is executed (using File -> Run in Script Editor).
-func _run():
+func _run() -> void:
 	var dict: Dictionary
 	var library_folder = DirAccess.open("res://GameLibrary")
 	if library_folder:

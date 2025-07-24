@@ -6,18 +6,18 @@ var enabled_icon = preload("res://UIArt/RegularOrderIcon.png")
 @export var list_name := "Menu"
 var number_of_items = 0
 
-func _ready():
+func _ready() -> void:
 	text = list_name
 
-func _on_toggled(toggle):
+func _on_toggled(toggle) -> void:
 	icon = disabled_icon if toggle else enabled_icon
 	expand_contract(!toggle)
 
-func add_item(item: Node):
+func add_item(item: Node) -> void:
 	items_control.get_child(0).add_child(item)
 	number_of_items += 1
 
-func update_visuals():
+func update_visuals() -> void:
 	await get_tree().process_frame # Wait for children to be placed properly
 	text = list_name + " (" + str(number_of_items) + ")"
 	var items = items_control.get_child(0).get_children()
@@ -25,7 +25,7 @@ func update_visuals():
 		var last_child = items[items.size() - 1]
 		items_control.custom_minimum_size.y = last_child.position.y + last_child.size.y
 
-func expand_contract(will_expand):
+func expand_contract(will_expand) -> void:
 	var expand_to: int = 0
 	if will_expand:
 		var items = items_control.get_child(0).get_children()

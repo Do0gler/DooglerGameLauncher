@@ -12,13 +12,13 @@ enum Corners {None, Top_Right, Top_Left, Bottom_Left}
 @export var diagonal_corner: Corners
 
 
-func _ready():
+func _ready() -> void:
 	main_window = get_window()
 	var min_height = ProjectSettings.get_setting("display/window/size/viewport_height")
 	var min_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 	main_window.min_size = Vector2(min_width,min_height)
 
-func _on_gui_input(event):
+func _on_gui_input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1:
 			mouse_offset = get_local_mouse_position()
@@ -26,7 +26,7 @@ func _on_gui_input(event):
 			window_size = main_window.size
 			following = !following
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if following:
 		match resize_direction:
 			ResizeDir.Vertical:
@@ -54,14 +54,14 @@ func _process(_delta):
 				else:
 					main_window.size = get_global_mouse_position() - mouse_offset
 
-func resize_x_primary():
+func resize_x_primary() -> void:
 	var move_calc = main_window.position as Vector2 + get_global_mouse_position() - mouse_offset
 	var will_grow_left = move_calc.x < main_window.position.x
 	if main_window.size.x > main_window.min_size.x || will_grow_left:
 		main_window.position.x = move_calc.x
 	main_window.size.x = window_size.x + (window_position.x - main_window.position.x)
 
-func resize_y_primary():
+func resize_y_primary() -> void:
 	var move_calc = main_window.position as Vector2 + get_global_mouse_position() - mouse_offset
 	var will_grow_up = move_calc.y < main_window.position.y
 	if main_window.size.y > main_window.min_size.y || will_grow_up:

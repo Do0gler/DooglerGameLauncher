@@ -6,20 +6,20 @@ class_name Manager
 @export var screenshot_panel: PackedScene
 @export var expandable_list: PackedScene
 @export var tag_scene: PackedScene
-var library_folder_name: String = "DooglerGamesLibrary"
-var selected_game: Game_Data
+var LIBRARY_FOLDER: String = "DooglerGamesLibrary"
+var sorting_method: String = "Default"
 var selected_game_node: GamePanel
-var current_game_pid = 0
-var game_launched = false
+var selected_game: Game_Data
 var default_game_order: Array
 var all_games: Dictionary
+var http: HTTPRequest
+var relevant_games := []
+var current_game_pid = 0
+var game_launched = false
 var can_switch_games = true
 var launched_game_is_exe = false
 var downloading = false
-var http: HTTPRequest
-var sorting_method: String = "Default"
 var sorting_method_reversed := false
-var relevant_games := []
 @export_category("Nodes")
 @export var settings_menu: Popup
 @export var games_list: Node
@@ -34,9 +34,9 @@ var relevant_games := []
 @export var update_button: Node
 @export var screenshot_container: Node
 @export var tag_container: Node
-@onready var search_bar = $Titlebar/MarginContainer/HBoxContainer2/SearchBar
+@onready var search_bar = %SearchBar
 
-func _ready():
+func _ready() -> void:
 	default_game_order = GameOrganizer.get_default_order()
 	# Check for updates on launch if enabled
 	if Updater.auto_check_updates:
@@ -45,8 +45,8 @@ func _ready():
 	all_games = GameOrganizer.categorize_by_default(default_game_order)
 	search_games("")
 	var dir = DirAccess.open("user://")
-	if(!dir.dir_exists(library_folder_name)):
-		dir.make_dir(library_folder_name)
+	if(!dir.dir_exists(LIBRARY_FOLDER)):
+		dir.make_dir(LIBRARY_FOLDER)
 		print("Created Library folder")
 	display_games()
 	if Updater.auto_check_updates:
@@ -54,7 +54,7 @@ func _ready():
 		await get_tree().process_frame
 		$FirstLoadingScreen.hide()
 
-func search_games(prompt: String):
+func search_games(prompt: String) -> void:
 	var no_spaces_prompt = prompt.replace(" ","")
 	if no_spaces_prompt != "":
 		relevant_games.clear()
@@ -72,12 +72,12 @@ func search_games(prompt: String):
 	search_bar.release_focus()
 	display_games()
 
-func _on_search_bar_text_changed(new_text: String):
+func _on_search_bar_text_changed(new_text: String) -> void:
 	if new_text == "":
 		search_games(new_text)
 		search_bar.release_focus()
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if game_launched:
 		if !OS.is_process_running(current_game_pid):
 			game_launched = false
@@ -92,7 +92,7 @@ func _process(_delta):
 		var percent = int(downloaded_bytes * 100 / body_size)
 		progress_bar.value = percent
 
-func display_games():
+func display_games() -> void:
 	await get_tree().process_frame
 	var games_in_list = games_list.get_children()
 	if games_in_list.size() > 0:
@@ -116,22 +116,22 @@ func display_games():
 				new_game_panel.update_display()
 		new_list_script.update_visuals()
 
-func set_current_game(game: GamePanel):
+func set_current_game(game: GamePanel) -> void:
 	if can_switch_games:
 		selected_game_node = game
 		selected_game = game.game_data
 		display_selected_game()
 
-func install_selected_game():
+func install_selected_game() -> void:
 	if selected_game != null:
 		http = HTTPRequest.new()
 		add_child(http)
 		# Create game folder if it doesnt exist
 		var game_folder_name = selected_game.file_name.get_basename()
-		var dir = DirAccess.open("user://" + library_folder_name)
+		var dir = DirAccess.open("user://" + LIBRARY_FOLDER)
 		if(!dir.dir_exists(game_folder_name)):
 			dir.make_dir(game_folder_name)
-		var download_file_path = "user://" + library_folder_name +\
+		var download_file_path = "user://" + LIBRARY_FOLDER +\
 		 "/" + game_folder_name + "/"+ selected_game.file_name
 		# Create file to write download to
 		var new_game_file = FileAccess.open(download_file_path, FileAccess.WRITE)
@@ -163,21 +163,21 @@ func install_selected_game():
 		get_game_cache(selected_game, downloaded_ver)
 		display_selected_game()
 
-func show_uninstall_confirm():
+func show_uninstall_confirm() -> void:
 	$ConfirmationDialog.show()
 
-func uninstall_current_game():
+func uninstall_current_game() -> void:
 	# Uninstall Game
-	var current_game_path = "user://" + library_folder_name +\
+	var current_game_path = "user://" + LIBRARY_FOLDER +\
 		 "/" + selected_game.file_name.get_basename()
 	recursive_delete_game(current_game_path)
 	display_selected_game()
 
-func launch_selected_game():
+func launch_selected_game() -> void:
 	if selected_game != null:
 		if selected_game.has_discord_rpc:
 			DiscordRpcManager.suspend_rpc()
-		var current_game_path = "user://" + library_folder_name +\
+		var current_game_path = "user://" + LIBRARY_FOLDER +\
 		 "/" + selected_game.file_name.get_basename() + "/"+ selected_game.game_file_name
 		var global_path = ProjectSettings.globalize_path(current_game_path)
 		if(selected_game.game_file_name.get_extension() == "exe"):
@@ -207,7 +207,7 @@ func launch_selected_game():
 
 func get_game_cache(game: Game_Data, ver := "") -> GameCache:
 	# Load game cached data if exists else calculate size and create cache
-	var game_folder_path = "user://" + library_folder_name +\
+	var game_folder_path = "user://" + LIBRARY_FOLDER +\
 	 "/" + game.file_name.get_basename()
 	var dir = DirAccess.open(game_folder_path)
 	var cache_name = game.file_name.get_basename() + "Cache.tres"
@@ -224,18 +224,18 @@ func get_game_cache(game: Game_Data, ver := "") -> GameCache:
 		ResourceSaver.save(cache, cache_path)
 		return cache
 
-func check_for_updates():
+func check_for_updates() -> void:
 	await Updater.check_for_updates()
 	display_games()
 	display_selected_game()
 
-func update_selected_game():
+func update_selected_game() -> void:
 	uninstall_current_game()
 	selected_game.is_outdated = false
 	selected_game_node.update_display()
 	install_selected_game()
 
-func display_selected_game():
+func display_selected_game() -> void:
 	# Destroy previous screenshots
 	for screenshot in screenshot_container.get_child(0).get_children():
 		screenshot.queue_free()
@@ -253,7 +253,7 @@ func display_selected_game():
 		screenshot.get_child(0).pressed.connect(_on_screenshot_popup_open.bind(i))
 		i += 1
 	# Show correct buttons for if file is installed or not
-	var game_folder_path = "user://" + library_folder_name +\
+	var game_folder_path = "user://" + LIBRARY_FOLDER +\
 	 "/" + selected_game.file_name.get_basename()
 	var dir = DirAccess.open(game_folder_path)
 	var game_size: String
@@ -287,15 +287,15 @@ func display_selected_game():
 		tag_container.add_child(new_tag)
 		new_tag.update_display(tag)
 
-func _on_screenshot_popup_open(screenshot_index):
+func _on_screenshot_popup_open(screenshot_index) -> void:
 	var screenshot_tex = $ScreenshotPopup/VBoxContainer/TextureRect
 	screenshot_tex.texture = selected_game.screenshots[screenshot_index]
 	$ScreenshotPopup.show()
 
-func _on_screenshot_popup_close_requested():
+func _on_screenshot_popup_close_requested() -> void:
 	$ScreenshotPopup.hide()
 
-func extract_zip_file(file_path: String, extract_to_path: String):
+func extract_zip_file(file_path: String, extract_to_path: String) -> void:
 	var dir := DirAccess.open(extract_to_path)
 	var reader := ZIPReader.new()
 	var err := reader.open(file_path)
@@ -316,7 +316,7 @@ func extract_zip_file(file_path: String, extract_to_path: String):
 	dir.remove(selected_game.file_name)
 	print("Done Extracting")
 
-func recursive_delete_game(dirPath):
+func recursive_delete_game(dirPath) -> void:
 	var dir = DirAccess.open(dirPath)
 	dir.list_dir_begin()
 	var fileName = dir.get_next()
@@ -331,7 +331,23 @@ func recursive_delete_game(dirPath):
 	dir.list_dir_end()
 	DirAccess.remove_absolute(dirPath)
 
-func sort_games(reversed := true, method: String = "Default"):
+func recursive_size_game(dirPath) -> int:
+	var size_in_bytes = 0
+	var dir = DirAccess.open(dirPath)
+	dir.list_dir_begin()
+	var fileName = dir.get_next()
+	while fileName != "":
+		var filePath = dirPath + "/" + fileName
+		if dir.current_is_dir():
+			size_in_bytes += recursive_size_game(filePath)
+		else:
+			var file = FileAccess.open(filePath, FileAccess.READ)
+			size_in_bytes += file.get_length()
+		fileName = dir.get_next()
+	dir.list_dir_end()
+	return size_in_bytes
+
+func sort_games(reversed := true, method: String = "Default") -> void:
 	for category in all_games:
 		var sorted_game_list
 		match method:
@@ -351,7 +367,7 @@ func sort_games(reversed := true, method: String = "Default"):
 	sorting_method = method
 	sorting_method_reversed = reversed
 
-func group_games(method: String):
+func group_games(method: String) -> void:
 	match method:
 		"Status":
 			all_games = GameOrganizer.categorize_by_status(default_game_order)
@@ -364,19 +380,3 @@ func group_games(method: String):
 	sort_games(sorting_method_reversed, sorting_method)
 	display_games()
 	get_tree().call_group("GroupButtons", "turn_off")
-
-func recursive_size_game(dirPath):
-	var size_in_bytes = 0
-	var dir = DirAccess.open(dirPath)
-	dir.list_dir_begin()
-	var fileName = dir.get_next()
-	while fileName != "":
-		var filePath = dirPath + "/" + fileName
-		if dir.current_is_dir():
-			size_in_bytes += recursive_size_game(filePath)
-		else:
-			var file = FileAccess.open(filePath, FileAccess.READ)
-			size_in_bytes += file.get_length()
-		fileName = dir.get_next()
-	dir.list_dir_end()
-	return size_in_bytes

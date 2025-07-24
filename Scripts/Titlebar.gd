@@ -4,7 +4,7 @@ var following = false
 var dragging_start_pos: Vector2
 @export var resize_controls: Node
 
-func _on_gui_input(event):
+func _on_gui_input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
 			following = !following
@@ -13,17 +13,17 @@ func _on_gui_input(event):
 			_on_windowed_button_pressed()
 
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if following:
 		var mouse_difference = get_global_mouse_position() - dragging_start_pos
 		get_window().position += mouse_difference as Vector2i
 
 
-func _on_exit_button_pressed():
+func _on_exit_button_pressed() -> void:
 	get_tree().quit()
 
 
-func _on_windowed_button_pressed():
+func _on_windowed_button_pressed() -> void:
 	# Toggle windowed mode
 	if get_window().mode == Window.MODE_WINDOWED:
 		get_window().mode = Window.MODE_FULLSCREEN
@@ -33,5 +33,5 @@ func _on_windowed_button_pressed():
 		resize_controls.show()
 
 
-func _on_minimize_button_pressed():
+func _on_minimize_button_pressed() -> void:
 	get_window().mode = Window.MODE_MINIMIZED

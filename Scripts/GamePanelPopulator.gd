@@ -3,11 +3,11 @@ class_name GamePanel
 
 var game_data: Game_Data
 
-func update_display():
+func update_display() -> void:
 	$MarginContainer/HBoxContainer/TextureRect.texture = game_data.icon
 	$MarginContainer/HBoxContainer/Label.text = game_data.game_name
 	$MarginContainer/HBoxContainer/UpdateIndicator.visible = game_data.is_outdated
 
-func set_current_game():
+func set_current_game() -> void:
 	var manager: Manager = get_tree().root.get_node("Manager")
 	manager.set_current_game(self)
