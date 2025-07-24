@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3da8np5hp0v3"]
 
-[ext_resource type="Script" path="res://Scripts/TagManager.gd" id="1_pnmaa"]
+[ext_resource type="Script" uid="uid://duhjimogish4d" path="res://Scripts/TagManager.gd" id="1_pnmaa"]
 
 [node name="TagPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(100, 35)

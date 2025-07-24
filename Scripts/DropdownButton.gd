@@ -6,6 +6,7 @@ extends Button
 
 func _ready():
 	set_sort_disabled()
+	toggled.connect(toggle_sort_order)
 
 func toggle_sort_order(_toggled: bool):
 	if _toggled:

@@ -1,6 +1,7 @@
 extends Control
 class_name Manager
 
+@export_category("PackedScenes")
 @export var game_panel: PackedScene
 @export var screenshot_panel: PackedScene
 @export var expandable_list: PackedScene
@@ -16,9 +17,10 @@ var can_switch_games = true
 var launched_game_is_exe = false
 var downloading = false
 var http: HTTPRequest
-var sorting_method: Callable = sort_default
+var sorting_method: String = "Default"
 var sorting_method_reversed := false
 var relevant_games := []
+@export_category("Nodes")
 @export var settings_menu: Popup
 @export var games_list: Node
 @export var display_description: Node
@@ -329,37 +331,24 @@ func recursive_delete_game(dirPath):
 	dir.list_dir_end()
 	DirAccess.remove_absolute(dirPath)
 
-func sort_default(reversed := true):
+func sort_games(reversed := true, method: String = "Default"):
 	for category in all_games:
-		var sorted_game_list = GameOrganizer.sort_by_name(all_games[category])
+		var sorted_game_list
+		match method:
+			"Size":
+				sorted_game_list = GameOrganizer.sort_by_size(all_games[category])
+			"Date":
+				sorted_game_list = GameOrganizer.sort_by_date(all_games[category])
+			"Default":
+				sorted_game_list = GameOrganizer.sort_by_name(all_games[category])
+			_:
+				sorted_game_list = GameOrganizer.sort_by_name(all_games[category])
 		if reversed:
 			sorted_game_list.reverse()
 		all_games[category] = sorted_game_list
 	display_games()
 	get_tree().call_group("SortButtons","set_sort_disabled")
-	sorting_method = sort_default
-	sorting_method_reversed = reversed
-
-func sort_by_date(reversed := true):
-	for category in all_games:
-		var sorted_game_list = GameOrganizer.sort_by_date(all_games[category])
-		if reversed:
-			sorted_game_list.reverse()
-		all_games[category] = sorted_game_list
-	display_games()
-	get_tree().call_group("SortButtons","set_sort_disabled")
-	sorting_method = sort_by_date
-	sorting_method_reversed = reversed
-
-func sort_by_size(reversed := true):
-	for category in all_games:
-		var sorted_game_list = GameOrganizer.sort_by_size(all_games[category])
-		if reversed:
-			sorted_game_list.reverse()
-		all_games[category] = sorted_game_list
-	display_games()
-	get_tree().call_group("SortButtons","set_sort_disabled")
-	sorting_method = sort_by_date
+	sorting_method = method
 	sorting_method_reversed = reversed
 
 func group_games(method: String):
@@ -372,7 +361,7 @@ func group_games(method: String):
 			all_games = GameOrganizer.categorize_by_default(default_game_order)
 		_:
 			all_games = GameOrganizer.categorize_by_default(default_game_order)
-	sorting_method.call(sorting_method_reversed)
+	sort_games(sorting_method_reversed, sorting_method)
 	display_games()
 	get_tree().call_group("GroupButtons", "turn_off")
 
